@@ -1,6 +1,7 @@
 package com.frozenorb.uhub.commands;
 
 import com.frozenorb.commonlibs.utils.MessageUtility;
+import com.frozenorb.uhub.spawn.SpawnHandler;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +18,7 @@ public class SpawnCommand implements CommandExecutor {
             return false;
         }
         Player player = (Player) commandSender;
-        final Location spawn = null;
+        final Location spawn = SpawnHandler.getSpawnLocation();
         player.teleport(spawn);
         player.sendMessage(MessageUtility.formatMessage("&aTeleported!"));
         return false;

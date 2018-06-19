@@ -1,4 +1,16 @@
 package com.frozenorb.commonlibs;
 
-public class CommonLibsPlugin {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class CommonLibsPlugin extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
 }
