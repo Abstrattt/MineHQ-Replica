@@ -4,6 +4,7 @@
 name: Basic
 version: null
 author: FrozenOrb Development Team
+main: com.frozenorb.basic.BasicPlugin
 
 ############
 # Commands #

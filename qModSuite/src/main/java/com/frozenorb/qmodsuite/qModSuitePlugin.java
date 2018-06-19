@@ -1,6 +1,9 @@
 package com.frozenorb.qmodsuite;
 
 import com.frozenorb.commonlibs.redis.RedisHelper;
+import com.frozenorb.qmodsuite.commands.ReportCommand;
+import com.frozenorb.qmodsuite.commands.RequestCommand;
+import com.frozenorb.qmodsuite.commands.StaffChatCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,7 +33,9 @@ public class qModSuitePlugin extends JavaPlugin {
      * Register Commands
      */
     private void registerCommands(){
-
+        getCommand("report").setExecutor(new ReportCommand());
+        getCommand("request").setExecutor(new RequestCommand());
+        getCommand("staffchat").setExecutor(new StaffChatCommand());
     }
 
     /**
