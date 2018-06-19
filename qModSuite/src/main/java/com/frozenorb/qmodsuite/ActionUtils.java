@@ -9,7 +9,7 @@ public class ActionUtils {
     /**
      * Add cooldown for function within Redis
      */
-    private static void addCooldown(Player player, String channel, Integer cooldown){
+    public static void addCooldown(Player player, String channel, Integer cooldown){
         try (Jedis jedis = qModSuitePlugin.getRedisHelper().getPool().getResource()){
             Pipeline pipeline = jedis.pipelined();
             final String key = ModSuitePubSub.IDENTIFIER + channel + ":" + player.getName();
@@ -24,7 +24,7 @@ public class ActionUtils {
     /**
      * Check if a player has a cooldown for function within Redis
      */
-    private static boolean hasCooldown(Player player, String channel){
+    public static boolean hasCooldown(Player player, String channel){
         boolean cooldown = false;
         try (Jedis jedis = qModSuitePlugin.getRedisHelper().getPool().getResource()){
             cooldown = jedis.exists(ModSuitePubSub.IDENTIFIER + channel + ":" + player.getName());

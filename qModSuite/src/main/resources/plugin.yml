@@ -22,3 +22,7 @@ commands:
   staffchat:
     description: Talk to other Staff!
     aliases: [sc, modchat, adminchat]
+  #Staf Mode Command
+  staffmode:
+    description: Enter staff mode!
+    aliase: [sm, modmod]

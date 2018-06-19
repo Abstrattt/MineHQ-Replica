@@ -13,9 +13,12 @@ public class ModSuitePubSub extends JedisPubSub {
     /* Idententifier for PUBSUB channel */
     public static final String IDENTIFIER = "qModSuite-";
 
+    /* Spliter for the incoming messages */
+    public static final String SPLITER = "|||";
+
     @Override
     public void onMessage(String channel, String message) {
-        String[] deserialized = message.split(Pattern.quote("|||"));
+        String[] deserialized = message.split(Pattern.quote(SPLITER));
         String server = deserialized[0];
         String player = deserialized[1];
         String sendMessage = deserialized[2];
@@ -51,5 +54,6 @@ public class ModSuitePubSub extends JedisPubSub {
                 //Log that this in an invalid message
                 return;
         }
+        //TODO make this more effcient with less for loops
     }
 }

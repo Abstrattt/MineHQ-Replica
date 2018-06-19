@@ -4,6 +4,7 @@ import com.frozenorb.commonlibs.redis.RedisHelper;
 import com.frozenorb.qmodsuite.commands.ReportCommand;
 import com.frozenorb.qmodsuite.commands.RequestCommand;
 import com.frozenorb.qmodsuite.commands.StaffChatCommand;
+import com.frozenorb.qmodsuite.commands.StaffModeCommand;
 import lombok.Getter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,10 +22,9 @@ public class qModSuitePlugin extends JavaPlugin {
             //
             pubSub = new ModSuitePubSub();
             redisHelper = new RedisHelper(null);
-            //redisHelper.getPool().getResource().subscribe(new dsa(),  );
         }
         /* Subscribe to the Pub Sub Channels */
-        redisHelper.getPool().getResource().subscribe(pubSub, "qModSuite-SC", "qModSuite-RQ", "qModSuite-RP");
+        pubSub.subscribe("qModSuite-SC", "qModSuite-RQ", "qModSuite-RP");
         registerCommands();
         registerListeners();
         setup = true;
@@ -43,6 +43,7 @@ public class qModSuitePlugin extends JavaPlugin {
         getCommand("report").setExecutor(new ReportCommand());
         getCommand("request").setExecutor(new RequestCommand());
         getCommand("staffchat").setExecutor(new StaffChatCommand());
+        getCommand("staffmode").setExecutor(new StaffModeCommand());
     }
 
     /**
