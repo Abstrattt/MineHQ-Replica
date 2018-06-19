@@ -43,49 +43,14 @@ public class ReportCommand implements CommandExecutor {
                     if (!arg.equalsIgnoreCase(strings[0])) sb.append(arg).append(" ");
                 }
                 String newString = plugin.getSettings().getServerName() + "|||" + reported.getName() + "|||" + player.getName() + "|||" + sb.toString();
-                SendMessage request = new SendMessage("-1001389284725",
-                        "*Player Report*\n"
-                                + " » *Reported:* " + reported.getName() + "\n"
-                                + " » *Reporter:* " + player.getName() + "\n"
-                                + " » *Server:* " + plugin.getSettings().getServerName() + "\n"
-                                + " » *Reason:* " + sb.toString())
-                        .parseMode(ParseMode.Markdown)
-                        .disableWebPagePreview(true)
-                        .disableNotification(false);
-                SendResponse sendResponse = plugin.getTelegramManager().getBot().execute(request);
+                                SendResponse sendResponse = plugin.getTelegramManager().getBot().execute(request);
                 boolean ok = sendResponse.isOk();
                 Message message = sendResponse.message();
                 plugin.getJedisManager().getPubSubChannel().publish("AMC-RP", newString, "async");
+                qModSuitePlugin.getRedisHelper().getPool().getResource().publish()
                 player.sendMessage(Messages.format(commandSuccess));
             }
         }.runTaskAsynchronously(plugin);
         return false;
-    }
-
-    /**
-     * Add cooldown for function within Redis
-     */
-    private void addCooldown(Player player){
-        try (Jedis jedis = qModSuitePlugin.getRedisHelper().getPool().getResource()){
-            Pipeline pipeline = jedis.pipelined();
-            pipeline.set();
-            pipeline.expire();
-            pipeline.sync();
-            qModSuitePlugin.getRedisHelper().getPool().returnResource(jedis);
-            jedis.close();
-        }
-    }
-
-    /**
-     * Check if a player has a cooldown for function within Redis
-     */
-    private boolean hasCooldown(Player player){
-        boolean cooldown = false;
-        try (Jedis jedis = qModSuitePlugin.getRedisHelper().getPool().getResource()){
-            cooldown = jedis.exists("AMC-RP:" + player.getName());
-            qModSuitePlugin.getRedisHelper().getPool().returnResource(jedis);
-            jedis.close();
-        }
-        return cooldown;
     }
 }

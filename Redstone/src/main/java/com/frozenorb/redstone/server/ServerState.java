@@ -1,5 +1,9 @@
 package com.frozenorb.redstone.server;
 
+import lombok.Getter;
+import org.bukkit.Bukkit;
+
+@Getter
 public enum ServerState {
 
     ONLINE(0),
@@ -10,5 +14,9 @@ public enum ServerState {
 
     ServerState(int ordinal){
         this.ordinal = ordinal;
+    }
+
+    public static ServerState getCurrent(){
+        return Bukkit.hasWhitelist() ? WHITELISTED : ONLINE;
     }
 }

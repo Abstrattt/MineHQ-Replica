@@ -1,6 +1,7 @@
 package com.frozenorb.qmodsuite;
 
 import com.frozenorb.commonlibs.utils.MessageUtility;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import redis.clients.jedis.JedisPubSub;
@@ -10,7 +11,7 @@ import java.util.regex.Pattern;
 public class ModSuitePubSub extends JedisPubSub {
 
     /* Idententifier for PUBSUB channel */
-    private static final String identifier = "qModSuite-";
+    public static final String IDENTIFIER = "qModSuite-";
 
     @Override
     public void onMessage(String channel, String message) {
@@ -20,7 +21,7 @@ public class ModSuitePubSub extends JedisPubSub {
         String sendMessage = deserialized[2];
         switch (channel){
             /* Staff Chat */
-            case identifier + "SC":
+            case IDENTIFIER + "SC":
                 for (Player localPlayer : Bukkit.getOnlinePlayers()){
                     if (localPlayer.hasPermission("qModSuite.Staff.Recieve")){
                         localPlayer.sendMessage(MessageUtility.formatMessage("&7[" + server + "] &5" + player + " &d" + sendMessage));
@@ -28,7 +29,7 @@ public class ModSuitePubSub extends JedisPubSub {
                 }
                 return;
             /* Request */
-            case identifier + "RQ":
+            case IDENTIFIER + "RQ":
                 for (Player localPlayer : Bukkit.getOnlinePlayers()){
                     if (localPlayer.hasPermission("qModSuite.Request.Recieve")){
                         localPlayer.sendMessage(MessageUtility.formatMessage("&3[Request]&7[" + server + "]" + "&b" + player + " &7requested assistance"));
@@ -37,7 +38,7 @@ public class ModSuitePubSub extends JedisPubSub {
                 }
                 return;
             /* Report */
-            case identifier + "RP":
+            case IDENTIFIER + "RP":
                 String reported = deserialized[3];
                 for (Player localPlayer : Bukkit.getOnlinePlayers()){
                     if (localPlayer.hasPermission("qModSuite.Report.Recieve")){
