@@ -1,0 +1,15 @@
+###############
+# Information #
+###############
+name: qModSuite
+version: null
+author: FrozenOrb Development Team
+
+############
+# Commands #
+############
+commands:
+  #Donation Command
+  donate:
+    description: Be awesome!
+    aliases: [buy, store, shop]

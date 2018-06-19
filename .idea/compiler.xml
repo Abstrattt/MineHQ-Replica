@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Basic" />
+        <module name="CommonLibs" />
+        <module name="qLib" />
+        <module name="qModSuite" />
+        <module name="uHub" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Basic" target="1.6" />
+      <module name="CommonLibs" target="1.5" />
+      <module name="qLib" target="1.5" />
+      <module name="qModSuite" target="1.8" />
+      <module name="uHub" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

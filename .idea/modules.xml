@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Basic/Basic.iml" filepath="$PROJECT_DIR$/Basic/Basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bridge/Bridge.iml" filepath="$PROJECT_DIR$/Bridge/Bridge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hQueue/Bukkit/Bukkit.iml" filepath="$PROJECT_DIR$/hQueue/Bukkit/Bukkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bunkers/Bunkers.iml" filepath="$PROJECT_DIR$/Bunkers/Bunkers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CommonLibs/CommonLibs.iml" filepath="$PROJECT_DIR$/CommonLibs/CommonLibs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HCTeams/HCTeams.iml" filepath="$PROJECT_DIR$/HCTeams/HCTeams.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Meetup/Meetup.iml" filepath="$PROJECT_DIR$/Meetup/Meetup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mobtimizer/Mobtimizer.iml" filepath="$PROJECT_DIR$/Mobtimizer/Mobtimizer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parties/Parties.iml" filepath="$PROJECT_DIR$/Parties/Parties.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PotPvP/PotPvP.iml" filepath="$PROJECT_DIR$/PotPvP/PotPvP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hQueue/Proxy/Proxy.iml" filepath="$PROJECT_DIR$/hQueue/Proxy/Proxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hQueue/hQueue.iml" filepath="$PROJECT_DIR$/hQueue/hQueue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qLib/qLib.iml" filepath="$PROJECT_DIR$/qLib/qLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qModSuite/qModSuite.iml" filepath="$PROJECT_DIR$/qModSuite/qModSuite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uCosmetics/uCosmetics.iml" filepath="$PROJECT_DIR$/uCosmetics/uCosmetics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uHub/uHub.iml" filepath="$PROJECT_DIR$/uHub/uHub.iml" />
+    </modules>
+  </component>
+</project>
