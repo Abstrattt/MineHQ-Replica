@@ -4,12 +4,21 @@
 name: qModSuite
 version: null
 author: FrozenOrb Development Team
+main: com.frozenorb.qmodsuite.qModSuitePlugin
 
 ############
 # Commands #
 ############
 commands:
-  #Donation Command
-  donate:
-    description: Be awesome!
-    aliases: [buy, store, shop]
+  #Report Command
+  report:
+    description: Report a player!
+    aliases: []
+  #Request Command
+  request:
+    description: Send a request to staff!
+    aliases: []
+  #Staff Chat Command
+  staffchat:
+    description: Talk to other Staff!
+    aliases: [sc, modchat, adminchat]

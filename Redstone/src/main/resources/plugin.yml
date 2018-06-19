@@ -4,6 +4,7 @@
 name: Redstone
 version: null
 author: FrozenOrb Development Team
+main: com.frozenorb.redstone.RedstonePlugin
 
 ############
 # Commands #
