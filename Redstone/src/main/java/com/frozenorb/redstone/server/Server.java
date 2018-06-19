@@ -8,6 +8,7 @@ public class Server {
 
     private ServerGroup group;
     private ServerStage stage;
+    private ServerState state;
 
     public Server(){
 
