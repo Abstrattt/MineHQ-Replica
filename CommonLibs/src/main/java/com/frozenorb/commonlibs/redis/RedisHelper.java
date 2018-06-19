@@ -3,6 +3,7 @@ package com.frozenorb.commonlibs.redis;
 import lombok.Getter;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.JedisPubSub;
 
 @Getter
 public class RedisHelper {
