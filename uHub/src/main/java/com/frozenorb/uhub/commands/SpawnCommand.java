@@ -11,6 +11,7 @@ public class SpawnCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        /* Command sent from the Console */
         if (!(commandSender instanceof Player)){
             commandSender.sendMessage("You can not teleport to spawn as console.");
             return false;
