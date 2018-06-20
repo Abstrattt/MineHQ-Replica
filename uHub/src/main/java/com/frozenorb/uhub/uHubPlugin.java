@@ -1,5 +1,6 @@
 package com.frozenorb.uhub;
 
+import com.frozenorb.qlib.scoreboard.ScoreboardHandler;
 import com.frozenorb.uhub.commands.SpawnCommand;
 import com.frozenorb.uhub.configs.ConfigurationHandler;
 import com.frozenorb.uhub.listeners.*;
@@ -10,11 +11,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class uHubPlugin extends JavaPlugin {
 
     private boolean setup = false;
+    private ScoreboardHandler scoreboardHandler;
 
     @Override
     public void onEnable() {
         if (!setup){
             new ConfigurationHandler();
+            scoreboardHandler = new ScoreboardHandler(this, 2);
         }
         /* Load the Spawn */
         SpawnHandler.loadSpawnLocation();

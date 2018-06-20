@@ -1,0 +1,40 @@
+###############
+# Information #
+###############
+name: Basic
+version: null
+author: FrozenOrb Development Team
+main: com.frozenorb.basic.BasicPlugin
+
+############
+# Commands #
+############
+commands:
+  #Donation Command
+  donate:
+    description: Be awesome!
+    aliases: [buy, store, shop]
+  #Ping Command
+  ping:
+    description: Check your latency to the server.
+    aliases: [ms, latency]
+  #Ignore Command
+  ignore:
+    description: Desc
+    aliases: [alias]
+  #Message Command
+  message:
+    description: desc
+    aliases: [tell]
+  #Spy Command
+  spy:
+    description: desc
+    aliases: [cmdspy, chatspy]
+  #Toggle Messages Command
+  togglemessages:
+    description: desc
+    aliases: [tpm, togglepm]
+  #Un-Ignore Command
+  unignore:
+    description: desc
+    aliases: [alias]

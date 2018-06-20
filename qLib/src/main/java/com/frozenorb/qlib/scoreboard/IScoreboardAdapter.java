@@ -1,7 +1,6 @@
 package com.frozenorb.qlib.scoreboard;
 
 import org.bukkit.entity.Player;
-
 import java.util.List;
 
 public interface IScoreboardAdapter {

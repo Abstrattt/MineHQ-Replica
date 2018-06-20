@@ -22,7 +22,7 @@ public class ScoreboardHandler {
     /**
      * Scoreboard Handler Class
      */
-    ScoreboardHandler(JavaPlugin plugin, int interval){
+    public ScoreboardHandler(JavaPlugin plugin, int interval){
         /* Plugin Instance */
         this.plugin = plugin;
         /* Register Listeners */
@@ -38,7 +38,7 @@ public class ScoreboardHandler {
      */
     private void applyScoreboards(){
         Bukkit.getOnlinePlayers().forEach(player -> {
-            boards.putIfAbsent(player, new PlayerScoreboard(player));
+            boards.putIfAbsent(player, new PlayerScoreboard(this, player));
         });
     }
 }

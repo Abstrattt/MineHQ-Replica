@@ -8,12 +8,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class ConnectionListeners implements Listener {
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event){
+    public void onJoin(PlayerJoinEvent event) {
 
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent event){
+    public void onQuit(PlayerQuitEvent event) {
 
     }
 }

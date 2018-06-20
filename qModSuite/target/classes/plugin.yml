@@ -1,0 +1,29 @@
+###############
+# Information #
+###############
+name: qModSuite
+version: null
+website: https://www.frozenorb.net/
+author: FrozenOrb Development Team
+main: com.frozenorb.qmodsuite.qModSuitePlugin
+
+############
+# Commands #
+############
+commands:
+  #Report Command
+  report:
+    description: Report a player!
+    aliases: []
+  #Request Command
+  request:
+    description: Send a request to staff!
+    aliases: []
+  #Staff Chat Command
+  staffchat:
+    description: Talk to other Staff!
+    aliases: [sc, modchat, adminchat]
+  #Staf Mode Command
+  staffmode:
+    description: Enter staff mode!
+    aliase: [sm, modmod]

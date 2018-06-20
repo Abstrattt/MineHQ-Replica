@@ -10,6 +10,7 @@ import java.util.UUID;
 public class Game {
 
     private GameState state;
+    private GameProperties properties;
 
     public Game() {}
 

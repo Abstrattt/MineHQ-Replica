@@ -1,0 +1,17 @@
+###############
+# Information #
+###############
+name: Redstone
+version: null
+website: https://www.frozenorb.net/
+author: FrozenOrb Development Team
+main: com.frozenorb.redstone.RedstonePlugin
+
+############
+# Commands #
+############
+commands:
+  #Donation Command
+  enviroment:
+    description: Check the current redstone enviroment
+    aliases: [rsenv]

@@ -1,0 +1,17 @@
+###############
+# Information #
+###############
+name: uHub
+version: null
+main: com.frozenorb.uhub.uHubPlugin
+website: https://www.frozenorb.net/
+author: FrozenOrb Development Team
+
+############
+# Commands #
+############
+commands:
+  #Spawn Command
+  spawn:
+    description: Teleport to the Hub spawn.
+    aliases: [spawntp]

@@ -5,6 +5,7 @@ import com.frozenorb.meetup.backend.game.Game;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -24,6 +25,10 @@ public class ConnectionListeners implements Listener {
         /* Player Object */
         Player player = event.getPlayer();
 
+    }
+
+    @EventHandler
+    public void onPreLogin(AsyncPlayerPreLoginEvent event) {
     }
 
 }
