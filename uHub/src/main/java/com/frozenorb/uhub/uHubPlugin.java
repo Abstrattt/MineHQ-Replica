@@ -17,7 +17,7 @@ public class uHubPlugin extends JavaPlugin {
     public void onEnable() {
         if (!setup){
             new ConfigurationHandler();
-            scoreboardHandler = new ScoreboardHandler(this, 2);
+            scoreboardHandler = new ScoreboardHandler(this, 2, new HubAdapter());
         }
         /* Load the Spawn */
         SpawnHandler.loadSpawnLocation();

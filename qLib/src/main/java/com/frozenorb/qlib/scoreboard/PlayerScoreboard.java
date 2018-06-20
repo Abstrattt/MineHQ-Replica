@@ -1,17 +1,18 @@
 package com.frozenorb.qlib.scoreboard;
 
+import com.frozenorb.commonlibs.utils.MathsUtility;
+import com.frozenorb.commonlibs.utils.MessageUtility;
 import com.frozenorb.qlib.misc.FakePlayer;
 import com.frozenorb.qlib.misc.SimpleEntry;
 import lombok.Getter;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 public class PlayerScoreboard {
@@ -24,8 +25,6 @@ public class PlayerScoreboard {
 
     /* Cached Entries */
     private Map<Integer, FakePlayer> cache;
-    /* Is Title Set */
-    private boolean titleSet;
     /* Player */
     private Player player;
     /* Objective */
@@ -113,7 +112,7 @@ public class PlayerScoreboard {
         /* Prefix, Suffix, and Middle */
         team.setPrefix(simpleEntry.getPrefix());
         team.setSuffix(simpleEntry.getSuffix());
-        fakePlayer.setName(ChatColor.values()[MathsUtil.convertToPositive(scoreObject.getCurrentline())]
+        fakePlayer.setName(ChatColor.values()[MathsUtility.convertToPositive(scoreObject.getCurrentline())]
                 + ChatColor.WHITE.toString()
                 + ChatColor.getLastColors(simpleEntry.getPrefix())
                 + simpleEntry.getMiddle());
@@ -134,12 +133,7 @@ public class PlayerScoreboard {
      * @return
      */
     private FakePlayer getFakePlayer(Team team){
-        for (FakePlayer fakePlayer : cache.values()){
-            if (fakePlayer.getTeam().equals(team)){
-                return fakePlayer;
-            }
-        }
-        return null;
+        return cache.values().stream().filter(fakePlayer -> fakePlayer.getTeam().equals(team)).findFirst().orElse(null);
     }
 
     /**
@@ -158,12 +152,8 @@ public class PlayerScoreboard {
      * @param title
      */
     private void updateTitle(String title) {
-        if (title != null) {
-            if (!title.equalsIgnoreCase("")) {
-                if (!objective.getDisplayName().equals(title)) {
-                    objective.setDisplayName(MessageUtil.formatMessage(title));
-                }
-            }
+        if (title != null && !title.equalsIgnoreCase("") && !objective.getDisplayName().equals(title)) {
+            objective.setDisplayName(MessageUtility.formatMessage(title));
         }
     }
 
@@ -174,34 +164,29 @@ public class PlayerScoreboard {
      */
     private List<BufferedScoreObject> processToBuffer() {
         /* Current Line */
-        int currentLine = ScaffoldScoreboard.getType().getStartNumber();
+        int currentLine = 1;
         /* Create new list */
         List<BufferedScoreObject> bufferedLines = new ArrayList<>();
-        /* Get all the adapters */ //TODO use a Java 8 Lambada
-        for (Integer number : ScaffoldScoreboard.getAdapters().keySet()) {
-            /* Adapater Object */
-            IScoreboardAdapter adapter = ScaffoldScoreboard.getAdapters().get(number);
-            /* Update Scoreboard Title*/
-            updateTitle(adapter.getScoreboardTitle(player));
-            /* Grab the lines specific to the adapter */
-            List<String> lines = adapter.getScoreboardLines(player);
-            /* Flip lines if the style permits */
-            if (ScaffoldScoreboard.getType().needsFlip()) {
-                Collections.reverse(lines);
-            }
-            /* Loop through each line */
-            for (String lineObj : lines) {
-                /* Create a Buffered Score Object */
-                BufferedScoreObject bufferedScoreObject = getScoreObject(currentLine, lineObj);
-                /* Add the object to the list */
-                bufferedLines.add(bufferedScoreObject);
-                /* Generate the local current line */
-                currentLine = bufferedScoreObject.getCurrentline();
-                /* Check if the amount of lines that are being looped is greater than the max */
-                if (bufferedLines.size() >= MAX_ENTRIES) {
-                    /* Return all the Buffered Entries*/
-                    return bufferedLines;
-                }
+
+        IScoreboardAdapter adapter = handler.getAdapter();
+        /* Update Scoreboard Title*/
+        updateTitle(adapter.getScoreboardTitle(player));
+        /* Grab the lines specific to the adapter */
+        List<String> lines = adapter.getScoreboardLines(player);
+        /* Flip lines if the style permits */
+        Collections.reverse(lines);
+        /* Loop through each line */
+        for (String lineObj : lines) {
+            /* Create a Buffered Score Object */
+            BufferedScoreObject bufferedScoreObject = getScoreObject(currentLine, lineObj);
+            /* Add the object to the list */
+            bufferedLines.add(bufferedScoreObject);
+            /* Generate the local current line */
+            currentLine = bufferedScoreObject.getCurrentline();
+            /* Check if the amount of lines that are being looped is greater than the max */
+            if (bufferedLines.size() >= MAX_ENTRIES) {
+                /* Return all the Buffered Entries*/
+                return bufferedLines;
             }
         }
         /* Return all the Buffered Entries */
@@ -219,13 +204,10 @@ public class PlayerScoreboard {
     }
 
     /**
-     *
-     *
-     * @param currentScore
-     * @return
+     * Increment
      */
     private Integer getScore(Integer currentScore){
-        return ScaffoldScoreboard.getType().isIncrement() ? ++currentScore : --currentScore;
+        return ++currentScore;
     }
 
 
