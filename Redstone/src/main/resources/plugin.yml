@@ -3,6 +3,7 @@
 ###############
 name: Redstone
 version: null
+website: https://www.frozenorb.net/
 author: FrozenOrb Development Team
 main: com.frozenorb.redstone.RedstonePlugin
 

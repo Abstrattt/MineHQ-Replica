@@ -3,6 +3,7 @@
 ###############
 name: qModSuite
 version: null
+website: https://www.frozenorb.net/
 author: FrozenOrb Development Team
 main: com.frozenorb.qmodsuite.qModSuitePlugin
 

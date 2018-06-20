@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class ServerHandler {
 
-    /** Collection of Servers **/
+    /* Collection of Servers */
     @Getter private static Set<Server> servers = new HashSet<Server>();
 
     /**
@@ -22,5 +22,30 @@ public class ServerHandler {
      */
     public static void removeServer(Server server){
         servers.remove(server);
+    }
+
+    /**
+     * Get a Server from its Server ID
+     */
+    public static Server getServer(String serverID){
+        for (Server server : servers) {
+            if (server.getServerID().equalsIgnoreCase(serverID)) {
+                return server;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get a set of of Servers from a ServerGroup
+     */
+    public static Set<Server> getServersFromGroup(String serverGroup) {
+        Set<Server> cachedServers = new HashSet<>();
+        for (Server server : servers){
+            if (server.getGroup().equalsIgnoreCase(serverGroup)){
+                cachedServers.add(server);
+            }
+        }
+        return cachedServers;
     }
 }

@@ -74,9 +74,9 @@ public class ReportCommand implements CommandExecutor {
 
                 /* Construct Message to send over Redis Pub Sub */
                 String constructedMessage = RedstonePluginSettings.SERVER_NAME + ModSuitePubSub.SPLITER +
-                                            reported.getName() + ModSuitePubSub.SPLITER +
                                             player.getName() + ModSuitePubSub.SPLITER +
-                                            reportMessage.toString();
+                                            reportMessage.toString() + ModSuitePubSub.SPLITER +
+                                            reported.getName();
 
                 /* Send over Channel */
                 qModSuitePlugin.getRedisHelper().getPool().getResource().publish(ModSuitePubSub.IDENTIFIER + CHANNEL_ID, constructedMessage);

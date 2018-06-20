@@ -6,7 +6,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import redis.clients.jedis.JedisPubSub;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ModSuitePubSub extends JedisPubSub {
 
@@ -22,38 +27,33 @@ public class ModSuitePubSub extends JedisPubSub {
         String server = deserialized[0];
         String player = deserialized[1];
         String sendMessage = deserialized[2];
+
+        List<String> lines = new ArrayList<>();
+        String permission = "qModSuite.%channel%.Recieve";
+
         switch (channel){
             /* Staff Chat */
             case IDENTIFIER + "SC":
-                for (Player localPlayer : Bukkit.getOnlinePlayers()){
-                    if (localPlayer.hasPermission("qModSuite.Staff.Recieve")){
-                        localPlayer.sendMessage(MessageUtility.formatMessage("&7[" + server + "] &5" + player + " &d" + sendMessage));
-                    }
-                }
-                return;
+                permission.replaceAll("%channel%", "Staff");
+                lines.add("&7[" + server + "] &5" + player + " &d" + sendMessage);
+                break;
             /* Request */
             case IDENTIFIER + "RQ":
-                for (Player localPlayer : Bukkit.getOnlinePlayers()){
-                    if (localPlayer.hasPermission("qModSuite.Request.Recieve")){
-                        localPlayer.sendMessage(MessageUtility.formatMessage("&3[Request]&7[" + server + "]" + "&b" + player + " &7requested assistance"));
-                        localPlayer.sendMessage(MessageUtility.formatMessage("   &eReason: &7" + sendMessage));
-                    }
-                }
-                return;
+                permission.replaceAll("%channel%", "Request");
+                lines.add("&3[Request]&7[" + server + "]" + "&b" + player + " &7requested assistance");
+                lines.add("   &eReason: &7" + sendMessage);
+                break;
             /* Report */
             case IDENTIFIER + "RP":
                 String reported = deserialized[3];
-                for (Player localPlayer : Bukkit.getOnlinePlayers()){
-                    if (localPlayer.hasPermission("qModSuite.Report.Recieve")){
-                        localPlayer.sendMessage(MessageUtility.formatMessage("&3[Report]&7[" + server + "]" + "&b" + reported + " &7reported by &b" + player));
-                        localPlayer.sendMessage(MessageUtility.formatMessage("   &eReason: &7" + sendMessage));
-                    }
-                }
-                return;
-            default:
-                //Log that this in an invalid message
-                return;
+                permission.replaceAll("%channel%", "Report");
+                lines.add("&3[Report]&7[" + server + "]" + "&b" + reported + " &7reported by &b" + player);
+                lines.add("   &eReason: &7" + sendMessage);
+                break;
         }
-        //TODO make this more effcient with less for loops
+
+        final String finalPermission = permission;
+        Set<Player> notified = Bukkit.getOnlinePlayers().stream().filter(player1 -> player1.hasPermission(finalPermission)).distinct().collect(Collectors.toSet());
+        notified.forEach(notifiedPlayer -> MessageUtility.formatMessages(lines).forEach(notifiedPlayer::sendMessage));
     }
 }

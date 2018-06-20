@@ -9,12 +9,9 @@ import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class PayloadThread extends Thread {
-
-    public PayloadThread(){
-
-    }
 
     @Override
     public void run() {
@@ -28,9 +25,14 @@ public class PayloadThread extends Thread {
             data.put("tps", TPSUtility.getRecentTps()[0] + "");
 
             /* Put that data into the database */
-            jedis.hmset("Redstone-ServerMain:" + RedstonePluginSettings.SERVER_NAME, data);
+            jedis.hmset("Redstone-Server:" + RedstonePluginSettings.SERVER_NAME, data);
             RedstonePlugin.getRedisHelper().getPool().returnResource(jedis);
             jedis.close();
+        }
+        try {
+            sleep(TimeUnit.MILLISECONDS.toSeconds(1));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

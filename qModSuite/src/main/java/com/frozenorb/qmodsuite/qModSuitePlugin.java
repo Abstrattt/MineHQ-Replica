@@ -1,5 +1,7 @@
 package com.frozenorb.qmodsuite;
 
+import com.frozenorb.commonlibs.ConfigHelper;
+import com.frozenorb.commonlibs.redis.RedisCredentials;
 import com.frozenorb.commonlibs.redis.RedisHelper;
 import com.frozenorb.qmodsuite.commands.ReportCommand;
 import com.frozenorb.qmodsuite.commands.RequestCommand;
@@ -15,16 +17,23 @@ public class qModSuitePlugin extends JavaPlugin {
     private static boolean setup = false;
     @Getter private static RedisHelper redisHelper;
     @Getter private static ModSuitePubSub pubSub;
+    @Getter private static ConfigHelper config;
 
     @Override
     public void onEnable() {
         if (!setup){
-            //
+            config = new ConfigHelper("config", getDataFolder().getAbsolutePath());
             pubSub = new ModSuitePubSub();
-            redisHelper = new RedisHelper(null);
+            redisHelper = new RedisHelper(new RedisCredentials(config.getConfiguration().getString("Redis.IP"),
+                    config.getConfiguration().getString("Redis.Password"),
+                    config.getConfiguration().getInt("Redis.Port")));
         }
+
         /* Subscribe to the Pub Sub Channels */
-        pubSub.subscribe("qModSuite-SC", "qModSuite-RQ", "qModSuite-RP");
+        pubSub.subscribe(ModSuitePubSub.IDENTIFIER + "SC",
+                ModSuitePubSub.IDENTIFIER + "RQ",
+                ModSuitePubSub.IDENTIFIER + "RP");
+        /* Register Commands and Plugin Listeners */
         registerCommands();
         registerListeners();
         setup = true;
@@ -51,6 +60,5 @@ public class qModSuitePlugin extends JavaPlugin {
      */
     private void registerListeners() {
         PluginManager pm = getServer().getPluginManager();
-
     }
 }

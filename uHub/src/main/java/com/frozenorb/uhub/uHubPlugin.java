@@ -1,7 +1,9 @@
 package com.frozenorb.uhub;
 
 import com.frozenorb.uhub.commands.SpawnCommand;
+import com.frozenorb.uhub.configs.ConfigurationHandler;
 import com.frozenorb.uhub.listeners.*;
+import com.frozenorb.uhub.spawn.SpawnHandler;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,8 +14,11 @@ public class uHubPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         if (!setup){
-            //DO SOMETHING
+            new ConfigurationHandler();
         }
+        /* Load the Spawn */
+        SpawnHandler.loadSpawnLocation();
+        /* Register Commands and Plugin Listeners */
         registerCommands();
         registerListeners();
     }

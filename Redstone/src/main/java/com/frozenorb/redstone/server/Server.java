@@ -9,13 +9,16 @@ import java.util.HashMap;
 public class Server {
 
     /* Server Group */
-    private ServerGroup group;
+    private String group;
     /* Server Stage */
     private ServerStage stage;
-    /* Server State */
-    private ServerState state;
+    /* Server ID */
+    private String serverID;
+    /* Server Data */
+    private ServerData data;
 
-    public Server(){
-
+    public Server(String serverID){
+        this.serverID = serverID;
+        this.data = new ServerData(this);
     }
 }

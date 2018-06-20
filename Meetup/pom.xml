@@ -53,5 +53,10 @@
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.frozenorb</groupId>
+            <artifactId>CommonLibs</artifactId>
+            <version>0.1a</version>
+        </dependency>
     </dependencies>
 </project>

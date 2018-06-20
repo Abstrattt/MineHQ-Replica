@@ -12,7 +12,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashSet;
 import java.util.Set;
 
-
 public class RedstonePlugin extends JavaPlugin {
 
     private boolean setup = false;
@@ -59,7 +58,6 @@ public class RedstonePlugin extends JavaPlugin {
         for (Thread thread : threads){
             thread.stop();
         }
-
     }
 
 

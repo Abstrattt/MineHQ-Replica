@@ -13,11 +13,12 @@ public enum JoinItems {
             0,
             /* Item */
             new ItemUtility()
-                    .title("&3&l>> &e&lServer Selector &3&l<<")
+                    .title("&3&l» &e&lServer Selector &3&l«")
                     .material(Material.WATCH)
                     .build(),
             /* Click Handler */
             player -> {
+
             }
     )),
 
@@ -26,11 +27,12 @@ public enum JoinItems {
             0,
             /* Item */
             new ItemUtility()
-                    .title("Cosmetics")
+                    .title("» Cosmetics «")
                     .material(Material.FEATHER)
                     .build(),
             /* Click Handler */
             player -> {
+
             }
     )),
 
@@ -39,11 +41,12 @@ public enum JoinItems {
             0,
             /* Item */
             new ItemUtility()
-                    .title("Ender Butt")
+                    .title("» Ender Butt «")
                     .material(Material.ENDER_PEARL)
                     .build(),
             /* Click Handler */
             player -> {
+
             }
     ));
 
