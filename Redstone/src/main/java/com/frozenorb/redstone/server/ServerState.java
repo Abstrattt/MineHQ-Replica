@@ -16,6 +16,15 @@ public enum ServerState {
         this.ordinal = ordinal;
     }
 
+    public static ServerState getFromOrdinal(int ordinal) {
+        for (ServerState state : ServerState.values()) {
+            if (state.getOrdinal() == ordinal) {
+                return state;
+            }
+        }
+        return null;
+    }
+
     public static ServerState getCurrent(){
         return Bukkit.hasWhitelist() ? WHITELISTED : ONLINE;
     }

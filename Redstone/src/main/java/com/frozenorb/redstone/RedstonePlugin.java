@@ -2,6 +2,7 @@ package com.frozenorb.redstone;
 
 import com.frozenorb.commonlibs.redis.RedisCredentials;
 import com.frozenorb.commonlibs.redis.RedisHelper;
+import com.frozenorb.redstone.commands.EnviromentCommand;
 import com.frozenorb.redstone.server.ServerHandler;
 import com.frozenorb.redstone.threads.FetchThread;
 import com.frozenorb.redstone.threads.PayloadThread;
@@ -48,23 +49,28 @@ public class RedstonePlugin extends JavaPlugin {
         stopThreads();
     }
 
-    public void startThreads(){
+    /**
+     * Start Threads
+     */
+    private void startThreads(){
         for (Thread thread : threads){
             thread.start();
         }
     }
 
-    public void stopThreads(){
+    /**
+     * Stop Threads
+     */
+    private void stopThreads(){
         for (Thread thread : threads){
             thread.stop();
         }
     }
 
-
     /**
      * Load the Plugin settings from the Redstone Plugin settings.yml
      */
-    public void loadPluginSettings(){
+    private void loadPluginSettings(){
         RedstonePluginSettings.SERVER_NAME = config.getConfiguration().getString("Server-Name");
         RedstonePluginSettings.SERVER_GROUP = config.getConfiguration().getString("Server-Group");
         //Add loggers
@@ -73,8 +79,8 @@ public class RedstonePlugin extends JavaPlugin {
     /**
      * Register Commands
      */
-    private void registerCommands(){
-
+    private void registerCommands() {
+        getCommand("evnviroment").setExecutor(new EnviromentCommand());
     }
 
     /**

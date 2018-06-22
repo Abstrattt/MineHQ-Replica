@@ -12,7 +12,6 @@ public class ServerData {
 
     /* Server Instance */
     private Server server;
-
     /* Online and Maximum Players */
     private int onlinePlayers, maxPlayers;
     /* Ticks Per Second */
