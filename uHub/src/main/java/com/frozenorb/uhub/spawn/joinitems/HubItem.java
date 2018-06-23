@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 public class HubItem {
 
     /* Slot */
-    private Integer slot;
+    private int slot;
     /* Item */
     private ItemStack item;
     /* Click Handler */

@@ -27,9 +27,7 @@ public class uHubPlugin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-
-    }
+    public void onDisable() {}
 
     /**
      * Register Commands

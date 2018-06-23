@@ -24,7 +24,7 @@ public enum JoinItems {
 
     /* Cosmetics */
     COSMETICS(new HubItem(
-            0,
+            4,
             /* Item */
             new ItemUtility()
                     .title("» Cosmetics «")
@@ -38,7 +38,7 @@ public enum JoinItems {
 
     /* Ender Butt */
     ENDER_BUTT(new HubItem(
-            0,
+            8,
             /* Item */
             new ItemUtility()
                     .title("» Ender Butt «")
