@@ -1,10 +1,11 @@
 package com.frozenorb.redstone;
 
 import com.frozenorb.commonlibs.ConfigHelper;
+import org.bukkit.plugin.java.JavaPlugin;
 
-public class RedstoneConfig extends ConfigHelper {
+class RedstoneConfig extends ConfigHelper {
 
-    public RedstoneConfig(String name, String directory) {
-        super(name, directory);
+    RedstoneConfig(JavaPlugin plugin, String name, String directory) {
+        super(plugin, name, directory);
     }
 }

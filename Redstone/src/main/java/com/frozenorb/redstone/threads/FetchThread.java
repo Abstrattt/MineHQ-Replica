@@ -18,34 +18,32 @@ import java.util.concurrent.TimeUnit;
 public class FetchThread extends Thread {
 
     public FetchThread() {
-
+        setName("Redstone-Fetch");
     }
 
     @Override
     public void run() {
         try(Jedis jedis = RedstonePlugin.getRedisHelper().getPool().getResource()){
-            Pipeline pipeline = jedis.pipelined();
-            final Set<String> servers = pipeline.keys("Redstone-Server:*").get();
+            final Set<String> servers = jedis.keys("Redstone-Server:*");
             for (String loopServer : servers){
                 String serverName = loopServer.replaceAll("Redstone-Server:", "");
                 /* Get or Create new Server */
                 Server server = ServerHandler.getServer(serverName);
                 if (server == null){
                     server = new Server(serverName);
+                    ServerHandler.addServer(server);
                 }
                 /* Server Group */
-                server.setGroup(pipeline.hget("Redstone-Server:" + serverName, "Group").get());
+                server.setGroup(jedis.hget("Redstone-Server:" + serverName, "Group"));
                 /* Server State */
-                server.getData().setState(ServerState.getFromOrdinal(Integer.valueOf(pipeline.hget("Redstone-Server:" + serverName, "State").get())));
+                server.getData().setState(ServerState.getFromOrdinal(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "State"))));
                 /* TPS */
-                server.getData().setTps(Double.valueOf(pipeline.hget("Redstone-Server:" + serverName, "TPS").get()));
+                server.getData().setTps(Double.valueOf(jedis.hget("Redstone-Server:" + serverName, "TPS")));
                 /* Online Players */
-                server.getData().setOnlinePlayers(Integer.valueOf(pipeline.hget("Redstone-Server:" + serverName, "OnlinePlayers").get()));
+                server.getData().setOnlinePlayers(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "OnlinePlayers")));
                 /* Max Players */
-                server.getData().setMaxPlayers(Integer.valueOf(pipeline.hget("Redstone-Server:" + serverName, "MaxPlayers").get()));
+                server.getData().setMaxPlayers(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "MaxPlayers")));
             }
-            RedstonePlugin.getRedisHelper().getPool().returnResource(jedis);
-            jedis.close();
         } try {
             sleep(TimeUnit.MILLISECONDS.toSeconds(1));
         } catch (InterruptedException e) {

@@ -2,13 +2,15 @@ package com.frozenorb.redstone.server;
 
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ServerHandler {
 
     /* Collection of Servers */
-    @Getter private static Set<Server> servers = new HashSet<Server>();
+    @Getter private static List<Server> servers = new ArrayList<>();
 
     /**
      * Add server to the Handlers Collection
@@ -39,8 +41,8 @@ public class ServerHandler {
     /**
      * Get a set of of Servers from a ServerGroup
      */
-    public static Set<Server> getServersFromGroup(String serverGroup) {
-        Set<Server> cachedServers = new HashSet<>();
+    public static List<Server> getServersFromGroup(String serverGroup) {
+        List<Server> cachedServers = new ArrayList<>();
         for (Server server : servers){
             if (server.getGroup().equalsIgnoreCase(serverGroup)){
                 cachedServers.add(server);
@@ -48,4 +50,5 @@ public class ServerHandler {
         }
         return cachedServers;
     }
+
 }

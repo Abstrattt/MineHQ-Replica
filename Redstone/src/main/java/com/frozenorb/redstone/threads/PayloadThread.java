@@ -13,6 +13,10 @@ import java.util.concurrent.TimeUnit;
 
 public class PayloadThread extends Thread {
 
+    public PayloadThread() {
+        setName("Redstone-Payload");
+    }
+
     @Override
     public void run() {
         try(Jedis jedis = RedstonePlugin.getRedisHelper().getPool().getResource()){
@@ -26,8 +30,7 @@ public class PayloadThread extends Thread {
 
             /* Put that data into the database */
             jedis.hmset("Redstone-Server:" + RedstonePluginSettings.SERVER_NAME, data);
-            RedstonePlugin.getRedisHelper().getPool().returnResource(jedis);
-            jedis.close();
+
         }
         try {
             sleep(TimeUnit.MILLISECONDS.toSeconds(1));
