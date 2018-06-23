@@ -1,0 +1,12 @@
+###############
+# Information #
+###############
+name: CommonLibs
+version: 1.0
+website: https://www.frozenorb.net/
+author: FrozenOrb Development Team
+main: com.frozenorb.commonlibs.CommonLibsPlugin
+
+############
+# Commands #
+############
