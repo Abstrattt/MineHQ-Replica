@@ -9,9 +9,10 @@ import java.util.HashMap;
 @Getter @Setter
 public class Game {
 
-    private HashMap<GameMap, Integer> votes = new HashMap<GameMap, Integer>();
+    private HashMap<GameMap, Integer> votes = new HashMap<>();
+    private GameState state;
 
     public Game(){
-
+        this.state = GameState.WAITING;
     }
 }
