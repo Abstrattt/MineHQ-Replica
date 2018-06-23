@@ -1,0 +1,13 @@
+Gamemode: Bunkers
+
+Queue:
+  #For Gamemodes like Bunkers
+  Singular: true
+  Required-Players: 15
+
+  #Only Useful for something like UHC Meetup
+  List:
+    Solo:
+      Required-Players: 16
+    Duo:
+      Required-Players: 24

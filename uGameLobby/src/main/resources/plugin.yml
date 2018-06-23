@@ -1,0 +1,22 @@
+###############
+# Information #
+###############
+name: uGameLobby
+version: 1.0
+website: https://www.frozenorb.net/
+depend: [CommonLibs, Redstone]
+author: FrozenOrb Development Team
+main: com.frozenorb.ugamelobby.uGameLobbyPlugin
+
+############
+# Commands #
+############
+commands:
+  #Spectate Command
+  spectate:
+    description: Ability to spectate a game
+    aliases: [spec, watch]
+  #Mode Queues Command
+  modequeues:
+    description: Send dump of gamemode queue
+    aliases: [modequeue]
