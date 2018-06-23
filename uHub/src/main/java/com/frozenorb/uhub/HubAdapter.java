@@ -1,6 +1,7 @@
 package com.frozenorb.uhub;
 
 import com.frozenorb.qlib.scoreboard.IScoreboardAdapter;
+import com.frozenorb.uhub.threads.PlayerCountThread;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class HubAdapter implements IScoreboardAdapter {
         List<String> lines = new ArrayList<>();
         lines.add("&7&m------------------");
         lines.add("&6Online:");
-        lines.add("&f1000");
+        lines.add("&f" + PlayerCountThread.PLAYER_COUNT);
         lines.add("");
         lines.add("&6Rank:");
         lines.add("&fDefault");
