@@ -11,6 +11,8 @@ import lombok.Getter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Date;
+
 
 public class qModSuitePlugin extends JavaPlugin {
 
@@ -22,7 +24,7 @@ public class qModSuitePlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         if (!setup){
-            config = new ConfigHelper("config", getDataFolder().getAbsolutePath());
+            config = new ConfigHelper(this,"config", getDataFolder().getAbsolutePath());
             pubSub = new ModSuitePubSub();
             redisHelper = new RedisHelper(new RedisCredentials(config.getConfiguration().getString("Redis.IP"),
                     config.getConfiguration().getString("Redis.Password"),
