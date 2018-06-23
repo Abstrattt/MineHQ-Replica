@@ -26,10 +26,12 @@ public class QueueHandler {
         queues.remove(queue);
     }
 
+    /**
+     * Check if a player is queued
+     */
     public static boolean isPlayerQueued(Player player) {
         return isPlayerQueued(player.getUniqueId());
     }
-
     private static boolean isPlayerQueued(UUID uuid) {
         for (ModeQueue queue : queues) {
             if (queue.getQueued().contains(uuid)) {
@@ -37,6 +39,33 @@ public class QueueHandler {
             }
         }
         return false;
+    }
+
+    /**
+     * Get Queue from Player object
+     */
+    public static ModeQueue getQueue(Player player) {
+        return getQueue(player.getUniqueId());
+    }
+    private static ModeQueue getQueue(UUID uuid) {
+        for (ModeQueue queue : queues) {
+            if (queue.getQueued().contains(uuid)) {
+                return queue;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get Queue from Queue ID
+     */
+    public static ModeQueue getQueue(String queueID) {
+        for (ModeQueue queue : queues) {
+            if (queue.getId().equalsIgnoreCase(queueID)) {
+                return queue;
+            }
+        }
+        return null;
     }
 
 }
