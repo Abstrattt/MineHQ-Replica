@@ -10,6 +10,8 @@ import redis.clients.jedis.Jedis;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PayloadThread extends Thread {
 
@@ -19,6 +21,17 @@ public class PayloadThread extends Thread {
 
     @Override
     public void run() {
+        while (true) {
+            ping();
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void ping() {
         try(Jedis jedis = RedstonePlugin.getRedisHelper().getPool().getResource()){
             /* Get the data from the current server and display it in a hash map */
             Map<String, String> data = new HashMap<>();
@@ -30,12 +43,7 @@ public class PayloadThread extends Thread {
 
             /* Put that data into the database */
             jedis.hmset("Redstone-Server:" + RedstonePluginSettings.SERVER_NAME, data);
-
-        }
-        try {
-            sleep(TimeUnit.MILLISECONDS.toSeconds(1));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            Logger.getAnonymousLogger().log(Level.SEVERE, data.toString());
         }
     }
 }

@@ -40,6 +40,9 @@ public class ConnectionListeners implements Listener {
         for (String line : messages){
             player.sendMessage(line);
         }
+
+        /* Set the Player Walk Speed */
+        player.setWalkSpeed(1.5f);
     }
 
     @EventHandler

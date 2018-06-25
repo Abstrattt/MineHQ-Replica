@@ -1,3 +1,4 @@
+#Gamemode ID
 Gamemode: Bunkers
 
 Queue:
@@ -11,3 +12,13 @@ Queue:
       Required-Players: 16
     Duo:
       Required-Players: 24
+
+Spectator-Format:
+  - "&7&m----------------"
+  - "Type: %type%"
+  - "Players: %min%/%max%"
+  - "Game Time: %time%"
+  - "&7&m----------------"
+  - "Border: %border%"
+  - "Scenario: %scenario%"
+  - "&7&m----------------"

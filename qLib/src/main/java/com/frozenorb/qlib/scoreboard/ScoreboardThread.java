@@ -5,11 +5,12 @@ import java.util.concurrent.TimeUnit;
 public class ScoreboardThread extends Thread {
 
     private ScoreboardHandler handler;
-    private int interval;
+    private long interval;
 
-    public ScoreboardThread(ScoreboardHandler handler, int interval) {
+    ScoreboardThread(ScoreboardHandler handler, int interval) {
+        setName("qLib-Scoreboard");
         this.handler = handler;
-        this.interval = interval;
+        this.interval = TimeUnit.MILLISECONDS.toSeconds(interval);
     }
 
     @Override
@@ -21,7 +22,7 @@ public class ScoreboardThread extends Thread {
             scoreboard.updateLines();
         });
         try {
-            sleep(TimeUnit.MILLISECONDS.toSeconds(interval));
+            sleep(interval);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

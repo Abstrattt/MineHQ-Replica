@@ -33,5 +33,7 @@
     <orderEntry type="library" name="Maven: org.mongodb:bson:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.5.0" level="project" />
     <orderEntry type="module" module-name="Redstone" />
+    <orderEntry type="module" module-name="Basic" />
+    <orderEntry type="module" module-name="qLib" />
   </component>
 </module>

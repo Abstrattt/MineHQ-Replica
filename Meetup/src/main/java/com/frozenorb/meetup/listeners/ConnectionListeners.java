@@ -25,10 +25,9 @@ public class ConnectionListeners implements Listener {
         /* Player Object */
         Player player = event.getPlayer();
 
-    }
+        Game game = MeetupPlugin.getGame();
+        game.leave(player);
 
-    @EventHandler
-    public void onPreLogin(AsyncPlayerPreLoginEvent event) {
     }
 
 }

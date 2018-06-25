@@ -42,8 +42,26 @@ public class FakePlayer implements OfflinePlayer {
         return this.uuid;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    @Override
+    public boolean isBanned() {
+        return false;
+    }
+
     @Override
     public void setBanned(boolean b) {
+
     }
 
     @Override
@@ -69,24 +87,6 @@ public class FakePlayer implements OfflinePlayer {
     @Override
     public long getLastPlayed() {
         return 0;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    @Override
-    public boolean isBanned() {
-        return false;
     }
 
     @Override

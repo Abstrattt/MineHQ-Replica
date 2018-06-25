@@ -32,7 +32,7 @@ public enum JoinItems {
                     .build(),
             /* Click Handler */
             player -> {
-
+                player.performCommand("cosmetics");
             }
     )),
 

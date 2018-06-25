@@ -17,6 +17,15 @@ public class PlayerCountThread extends Thread {
 
     @Override
     public void run() {
+        pingBungee();
+        try {
+            sleep(TimeUnit.MILLISECONDS.toSeconds(2));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void pingBungee() {
         try {
             ByteArrayOutputStream b = new ByteArrayOutputStream();
             DataOutputStream out = new DataOutputStream(b);
@@ -24,11 +33,6 @@ public class PlayerCountThread extends Thread {
             out.writeUTF("ALL");
             Bukkit.getServer().sendPluginMessage(uHubPlugin.getProvidingPlugin(uHubPlugin.class), "BungeeCord", b.toByteArray());
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            sleep(TimeUnit.MILLISECONDS.toSeconds(2));
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

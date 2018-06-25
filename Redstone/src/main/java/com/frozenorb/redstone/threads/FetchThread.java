@@ -23,6 +23,17 @@ public class FetchThread extends Thread {
 
     @Override
     public void run() {
+        while (true) {
+            ping();
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void ping(){
         try(Jedis jedis = RedstonePlugin.getRedisHelper().getPool().getResource()){
             final Set<String> servers = jedis.keys("Redstone-Server:*");
             for (String loopServer : servers){
@@ -44,10 +55,6 @@ public class FetchThread extends Thread {
                 /* Max Players */
                 server.getData().setMaxPlayers(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "MaxPlayers")));
             }
-        } try {
-            sleep(TimeUnit.MILLISECONDS.toSeconds(1));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

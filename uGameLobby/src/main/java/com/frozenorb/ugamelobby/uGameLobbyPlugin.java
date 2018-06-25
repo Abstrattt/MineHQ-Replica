@@ -1,8 +1,10 @@
 package com.frozenorb.ugamelobby;
 
+import com.frozenorb.qlib.scoreboard.ScoreboardHandler;
 import com.frozenorb.ugamelobby.commands.ModeQueuesCommand;
 import com.frozenorb.ugamelobby.commands.SpectateCommand;
 import com.frozenorb.ugamelobby.listeners.ConnectionListeners;
+import com.frozenorb.ugamelobby.queue.QueueModeThread;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,12 +13,15 @@ public class uGameLobbyPlugin extends JavaPlugin {
 
     private static boolean setup = false;
     public static String GAMEMODE;
+    public QueueModeThread queueThread;
 
     @Override
     public void onEnable() {
         if (!setup){
-
+            new ScoreboardHandler(this, 10, new GameLobbyAdapter());
+            queueThread = new QueueModeThread();
         }
+        queueThread.start();
         registerCommands();
         registerListeners();
         setup = true;
@@ -24,7 +29,7 @@ public class uGameLobbyPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        queueThread.stop();
     }
 
     /**

@@ -2,7 +2,7 @@
 # Information #
 ###############
 name: uHub
-version: null
+version: 1.0
 main: com.frozenorb.uhub.uHubPlugin
 website: https://www.frozenorb.net/
 author: FrozenOrb Development Team

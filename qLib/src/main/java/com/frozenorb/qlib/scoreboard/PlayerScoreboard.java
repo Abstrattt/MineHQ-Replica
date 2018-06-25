@@ -21,10 +21,10 @@ public class PlayerScoreboard {
     private final static int MAX_ENTRIES = 15;
 
     /* Objective Name Constant */
-    private final static String OBJECTIVE_NAME = "constructsb";
+    private final static String OBJECTIVE_NAME = "SB";
 
     /* Cached Entries */
-    private Map<Integer, FakePlayer> cache;
+    private Map<Integer, FakePlayer> cache = new HashMap<>();
     /* Player */
     private Player player;
     /* Objective */
@@ -37,21 +37,16 @@ public class PlayerScoreboard {
 
     /**
      * Player Scoreboard Class
-     *
-     * @param player - The player in which the scoreboard will be applied to.
      */
-    public PlayerScoreboard(ScoreboardHandler handler, Player player) {
+    PlayerScoreboard(ScoreboardHandler handler, Player player) {
         this.handler = handler;
         /* Define Player Object */
         this.player = player;
-        /* Setup Cache */
-        this.cache = new HashMap<>();
         /* Setup Scoreboard Module for player */
         setupModule();
         /* Update Lines initially */
         updateLines();
     }
-
 
     /**
      * Setup up all of the items for the scoreboard.
@@ -91,12 +86,9 @@ public class PlayerScoreboard {
     }
 
     /**
-     *
-     *
-     * @param scoreObject
-     * @return
+     * Apply Fake Player
      */
-    public FakePlayer applyFakePlayer(BufferedScoreObject scoreObject){
+    private FakePlayer applyFakePlayer(BufferedScoreObject scoreObject){
         /* Setup Team */
         Team team = scoreboard.getTeam("SB-" + scoreObject.getCurrentline());
         if (team == null){
@@ -112,6 +104,7 @@ public class PlayerScoreboard {
         /* Prefix, Suffix, and Middle */
         team.setPrefix(simpleEntry.getPrefix());
         team.setSuffix(simpleEntry.getSuffix());
+        /* Set Player Name */
         fakePlayer.setName(ChatColor.values()[MathsUtility.convertToPositive(scoreObject.getCurrentline())]
                 + ChatColor.WHITE.toString()
                 + ChatColor.getLastColors(simpleEntry.getPrefix())
@@ -127,29 +120,17 @@ public class PlayerScoreboard {
     }
 
     /**
-     *
-     *
-     * @param team
-     * @return
+     * Get Fake Player
      */
     private FakePlayer getFakePlayer(Team team){
         return cache.values().stream().filter(fakePlayer -> fakePlayer.getTeam().equals(team)).findFirst().orElse(null);
     }
-
-    /**
-     *
-     *
-     * @param integer
-     * @return
-     */
     private FakePlayer getFakePlayer(Integer integer){
         return cache.get(integer);
     }
 
     /**
-     *
-     *
-     * @param title
+     * Update Scoreboard Title
      */
     private void updateTitle(String title) {
         if (title != null && !title.equalsIgnoreCase("") && !objective.getDisplayName().equals(title)) {
@@ -158,9 +139,7 @@ public class PlayerScoreboard {
     }
 
     /**
-     *
-     *
-     * @return List - A List of all the buffered objects to finally be displayed to the player's scoreboard.
+     * Process to Buffer
      */
     private List<BufferedScoreObject> processToBuffer() {
         /* Current Line */
@@ -194,10 +173,7 @@ public class PlayerScoreboard {
     }
 
     /**
-     *
-     *
-     * @param currentLine
-     * @return
+     * Get Buffered Scoreboard Object
      */
     private BufferedScoreObject getScoreObject(Integer currentLine, String text){
         return new BufferedScoreObject(new SimpleEntry(text), getScore(currentLine));
@@ -210,11 +186,8 @@ public class PlayerScoreboard {
         return ++currentScore;
     }
 
-
     /**
      * Method to check if the Player is still actively on the server
-     *
-     * @return boolean - States if the player is active
      */
     private boolean isActive() {
         return player != null && player.isOnline() && player.getScoreboard() == scoreboard;

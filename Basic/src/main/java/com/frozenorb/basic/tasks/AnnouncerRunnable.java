@@ -18,7 +18,6 @@ public class AnnouncerRunnable extends BukkitRunnable {
         this.runTaskTimerAsynchronously(BasicPlugin.getProvidingPlugin(BasicPlugin.class), 0, 20*60);
     }
 
-
     @Override
     public void run() {
 

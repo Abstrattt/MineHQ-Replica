@@ -16,6 +16,9 @@ public class QueueModeThread extends Thread {
     public void run() {
         QueueHandler.getQueues().forEach(queue -> {
             if (queue.getQueued().size() >= queue.getRequiredPlayers()) {
+
+
+                /* Once a server is found */
                 queue.getQueued().forEach(uuid -> {
                     Player queuePlayer = Bukkit.getPlayer(uuid);
                     ByteArrayDataOutput out = ByteStreams.newDataOutput();

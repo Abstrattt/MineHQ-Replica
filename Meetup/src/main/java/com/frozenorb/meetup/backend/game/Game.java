@@ -12,20 +12,27 @@ public class Game {
     private GameState state;
     private GameProperties properties;
 
-    public Game() {}
+    public Game() {
+        this.state = GameState.WAITING;
+        this.properties = new GameProperties();
+    }
 
     public void join(Player player){
         this.join(player.getUniqueId());
     }
     public void join(UUID uuid){
-
+        switch (state){
+            case WAITING:
+        }
     }
 
     public void leave(Player player){
         this.leave(player.getUniqueId());
     }
     public void leave(UUID uuid){
-
+        switch (state){
+            case WAITING:
+        }
     }
 
 }

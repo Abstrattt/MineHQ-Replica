@@ -5,6 +5,7 @@ import com.frozenorb.uhub.commands.SpawnCommand;
 import com.frozenorb.uhub.configs.ConfigurationHandler;
 import com.frozenorb.uhub.listeners.*;
 import com.frozenorb.uhub.spawn.SpawnHandler;
+import com.frozenorb.uhub.spawn.menus.type.ServerSelectorMenu;
 import com.frozenorb.uhub.threads.PlayerCountThread;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,7 @@ public class uHubPlugin extends JavaPlugin {
         registerBungeeListeners();
         registerCommands();
         registerListeners();
+        setup = true;
     }
 
     @Override

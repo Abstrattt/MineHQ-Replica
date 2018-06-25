@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class ClickListeners implements Listener {
@@ -14,6 +15,10 @@ public class ClickListeners implements Listener {
         Player player = event.getPlayer();
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() == Material.AIR){
+            return;
+        }
+
+        if (!event.getAction().equals(Action.RIGHT_CLICK_AIR) || !event.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
             return;
         }
 

@@ -2,8 +2,9 @@
 # Information #
 ###############
 name: Redstone
-version: null
+version: 1.0
 website: https://www.frozenorb.net/
+depend: [CommonLibs]
 author: FrozenOrb Development Team
 main: com.frozenorb.redstone.RedstonePlugin
 
@@ -11,7 +12,11 @@ main: com.frozenorb.redstone.RedstonePlugin
 # Commands #
 ############
 commands:
-  #Donation Command
-  enviroment:
+  #Enviroment Command
+  rsenviroment:
     description: Check the current redstone enviroment
     aliases: [rsenv]
+  #Servers Command
+  rsservers:
+    description: Check the redstone servers
+    aliases: [rsserver]

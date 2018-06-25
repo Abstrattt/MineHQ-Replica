@@ -2,9 +2,10 @@
 # Information #
 ###############
 name: qModSuite
-version: null
+version: 1.0
 website: https://www.frozenorb.net/
 author: FrozenOrb Development Team
+depend: [CommonLibs]
 main: com.frozenorb.qmodsuite.qModSuitePlugin
 
 ############
@@ -26,4 +27,12 @@ commands:
   #Staf Mode Command
   staffmode:
     description: Enter staff mode!
-    aliase: [sm, modmod]
+    aliases: [sm, modmod]
+  #Staff Online Command
+  staffonline:
+    description: Lists the online staff members!
+    aliases: [stafflist]
+  #Freeze Command
+  freeze:
+    description: Freezes a player!
+    aliases: [ss, screenshare]

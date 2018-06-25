@@ -10,7 +10,7 @@ import java.util.Set;
 public class ServerHandler {
 
     /* Collection of Servers */
-    @Getter private static List<Server> servers = new ArrayList<>();
+    @Getter static List<Server> servers = new ArrayList<>();
 
     /**
      * Add server to the Handlers Collection
@@ -43,12 +43,25 @@ public class ServerHandler {
      */
     public static List<Server> getServersFromGroup(String serverGroup) {
         List<Server> cachedServers = new ArrayList<>();
-        for (Server server : servers){
+        for (Server server : servers) {
             if (server.getGroup().equalsIgnoreCase(serverGroup)){
                 cachedServers.add(server);
             }
         }
         return cachedServers;
+    }
+
+    /**
+     * Get a list of the Server Groups
+     */
+    public static List<String> getServerGroups() {
+        List<String> cachedGroups = new ArrayList<>();
+        for (Server server : servers) {
+            if (!cachedGroups.contains(server.getGroup())) {
+                cachedGroups.add(server.getGroup());
+            }
+        }
+        return cachedGroups;
     }
 
 }
