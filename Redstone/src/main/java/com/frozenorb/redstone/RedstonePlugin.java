@@ -96,6 +96,7 @@ public class RedstonePlugin extends JavaPlugin {
     private void loadPluginSettings(){
         RedstonePluginSettings.SERVER_NAME = config.getConfiguration().getString("Server-Name");
         RedstonePluginSettings.SERVER_GROUP = config.getConfiguration().getString("Server-Group");
+        RedstonePluginSettings.SERVER_STAGE = config.getConfiguration().getString("Server-Stage");
     }
 
     /**

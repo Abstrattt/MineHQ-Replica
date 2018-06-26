@@ -31,6 +31,9 @@ public class PayloadThread extends Thread {
         }
     }
 
+    /**
+     * TODO going to make this more effcient by putting shit like Max Players, State, Group, Server Status
+     */
     private void ping() {
         try(Jedis jedis = RedstonePlugin.getRedisHelper().getPool().getResource()){
             /* Get the data from the current server and display it in a hash map */
