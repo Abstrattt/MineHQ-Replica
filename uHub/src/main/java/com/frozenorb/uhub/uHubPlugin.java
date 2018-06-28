@@ -20,7 +20,7 @@ public class uHubPlugin extends JavaPlugin {
     public void onEnable() {
         if (!setup){
             new ConfigurationHandler();
-            scoreboardHandler = new ScoreboardHandler(this, 2, new HubAdapter());
+            scoreboardHandler = new ScoreboardHandler(this, 10, new HubAdapter());
         }
         /* Load the Spawn */
         SpawnHandler.loadSpawnLocation();
@@ -32,7 +32,8 @@ public class uHubPlugin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {}
+    public void onDisable() {
+    }
 
     /**
      * Register BungeeCord Channels
@@ -55,7 +56,6 @@ public class uHubPlugin extends JavaPlugin {
     private void registerListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new DoubleJumpListeners(), this);
-        pm.registerEvents(new EnderbuttListeners(), this);
         pm.registerEvents(new PlayerListeners(), this);
         pm.registerEvents(new ConnectionListeners(), this);
         pm.registerEvents(new ClickListeners(), this);

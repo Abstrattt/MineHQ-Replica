@@ -1,9 +1,13 @@
 package com.frozenorb.uhub.spawn.joinitems;
 
 import com.frozenorb.commonlibs.utils.ItemUtility;
+import com.frozenorb.uhub.spawn.SpawnHandler;
 import lombok.Getter;
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 @Getter
 public enum JoinItems {
@@ -13,7 +17,7 @@ public enum JoinItems {
             0,
             /* Item */
             new ItemUtility()
-                    .title("&3&l» &e&lServer Selector &3&l«")
+                    .title("&9» &e&lServer Selector &9«")
                     .material(Material.WATCH)
                     .build(),
             /* Click Handler */
@@ -27,13 +31,11 @@ public enum JoinItems {
             4,
             /* Item */
             new ItemUtility()
-                    .title("» Cosmetics «")
+                    .title("&9» &d&lCosmetics &9«")
                     .material(Material.FEATHER)
                     .build(),
             /* Click Handler */
-            player -> {
-                player.performCommand("cosmetics");
-            }
+            player -> player.sendMessage("Attemping to open cosmetics")
     )),
 
     /* Ender Butt */
@@ -41,12 +43,17 @@ public enum JoinItems {
             8,
             /* Item */
             new ItemUtility()
-                    .title("» Ender Butt «")
+                    .title("&9» &5&lEnder Butt &9«")
                     .material(Material.ENDER_PEARL)
+                    .amount(64)
                     .build(),
-            /* Click Handler */
             player -> {
-
+                Item item = player.getWorld().dropItem(player.getLocation().add(0.0, 0.5, 0.0), new ItemStack(Material.ENDER_PEARL, 1));
+                item.setPickupDelay(Integer.MAX_VALUE);
+                item.setVelocity(player.getLocation().getDirection().normalize().multiply(1.5));
+                item.setPassenger(player);
+                player.getWorld().playSound(player.getLocation(), Sound.ENDERMAN_SCREAM, 1.0F, 1.0F);
+                SpawnHandler.setupEnderpearl(item);
             }
     ));
 

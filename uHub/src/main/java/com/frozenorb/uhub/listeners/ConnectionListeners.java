@@ -25,7 +25,7 @@ public class ConnectionListeners implements Listener {
             "&5&l» &e&lDiscord: &adiscord.minehq.com",
             "&5&l» &e&lStore: &astore.minehq.com",
             "",
-            "&6&l------------------------------"
+            "&5&M------------------------------"
     ));
 
     @EventHandler
@@ -36,19 +36,25 @@ public class ConnectionListeners implements Listener {
         /* Apply Join Items */
         JoinItems.applyItems(player);
 
+        /* Remove Join Message */
+        event.setJoinMessage(null);
+
         /* Send MOTD */
         for (String line : messages){
             player.sendMessage(line);
         }
 
         /* Set the Player Walk Speed */
-        player.setWalkSpeed(1.5f);
+        //player.setWalkSpeed(1.1f);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         /* Player Object */
         Player player = event.getPlayer();
+
+        /* Remove Quit Message */
+        event.setQuitMessage(null);
     }
 
 }

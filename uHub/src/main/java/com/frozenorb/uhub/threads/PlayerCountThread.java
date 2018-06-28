@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PlayerCountThread extends Thread {
 
-    public static int PLAYER_COUNT = 0;
+    public static int PLAYER_COUNT = -1;
 
     public PlayerCountThread(){
         setName("uHub-PlayerCount");

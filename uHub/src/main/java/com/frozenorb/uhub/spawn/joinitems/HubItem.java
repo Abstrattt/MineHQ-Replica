@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.inventory.ItemStack;
 
-@AllArgsConstructor @Getter
+@Getter
 public class HubItem {
 
     /* Slot */
@@ -13,5 +13,15 @@ public class HubItem {
     private ItemStack item;
     /* Click Handler */
     private ClickHandler clickHandler;
+
+    public HubItem(int slot, ItemStack item) {
+        this.slot = slot;
+        this.item = item;
+    }
+
+    public HubItem(int slot, ItemStack item, ClickHandler clickHandler) {
+        this(slot, item);
+        this.clickHandler = clickHandler;
+    }
 
 }
