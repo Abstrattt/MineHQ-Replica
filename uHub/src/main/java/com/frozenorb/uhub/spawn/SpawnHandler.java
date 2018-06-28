@@ -25,6 +25,10 @@ public class SpawnHandler {
             public void run() {
                 /* Cancel if the item is gonski */
                 if (item.isDead()) this.cancel();
+                if (item.getPassenger() == null) {
+                    item.remove();
+                    this.cancel();
+                }
                 if ((item.getVelocity().getX() == 0.0D)
                         || (item.getVelocity().getY() == 0.0D)
                         || (item.getVelocity().getZ() == 0.0D)) {

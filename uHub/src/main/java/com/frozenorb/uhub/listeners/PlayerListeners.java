@@ -19,7 +19,7 @@ public class PlayerListeners implements Listener {
         /* Player Object */
         Player player = event.getPlayer();
 
-        if (player.getGameMode() != GameMode.CREATIVE) return;
+        if (player.getGameMode() == GameMode.CREATIVE) return;
 
         event.setCancelled(true);
     }
@@ -29,7 +29,7 @@ public class PlayerListeners implements Listener {
         /* Player Object */
         Player player = event.getPlayer();
 
-        if (player.getGameMode() != GameMode.CREATIVE) return;
+        if (player.getGameMode() == GameMode.CREATIVE) return;
 
         event.setCancelled(true);
     }
@@ -48,12 +48,12 @@ public class PlayerListeners implements Listener {
         /* Player Object */
         Player player = event.getPlayer();
 
-        if (player.getGameMode() != GameMode.CREATIVE) return;
+        if (player.getGameMode() == GameMode.CREATIVE) return;
 
         event.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onFoodLevelChange(FoodLevelChangeEvent event) {
         if (!(event.getEntity() instanceof Player)) {
             return;

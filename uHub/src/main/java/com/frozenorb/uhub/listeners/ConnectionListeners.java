@@ -33,6 +33,15 @@ public class ConnectionListeners implements Listener {
         /* Player Object */
         Player player = event.getPlayer();
 
+        /* Clear Inventory */
+        player.getInventory().clear();
+        player.setHealth(20);
+        player.setFoodLevel(40);
+        if (player.getVehicle() != null) {
+            player.getVehicle().leaveVehicle();
+        }
+
+
         /* Apply Join Items */
         JoinItems.applyItems(player);
 
@@ -45,7 +54,7 @@ public class ConnectionListeners implements Listener {
         }
 
         /* Set the Player Walk Speed */
-        //player.setWalkSpeed(1.1f);
+        player.setWalkSpeed(0.5f);
     }
 
     @EventHandler
@@ -55,6 +64,9 @@ public class ConnectionListeners implements Listener {
 
         /* Remove Quit Message */
         event.setQuitMessage(null);
+
+        /* Stop Riding */
+        player.getVehicle().setPassenger(null);
     }
 
 }
