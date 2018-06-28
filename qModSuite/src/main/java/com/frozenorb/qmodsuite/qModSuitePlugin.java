@@ -8,30 +8,32 @@ import com.frozenorb.qmodsuite.listeners.ProfileListeners;
 import lombok.Getter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Date;
-
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class qModSuitePlugin extends JavaPlugin {
 
     private static boolean setup = false;
     @Getter private static RedisHelper redisHelper;
     @Getter private static ModSuitePubSub pubSub;
-    @Getter private static ConfigHelper config;
+    public static ConfigHelper config;
 
     @Override
     public void onEnable() {
         if (!setup){
             config = new ConfigHelper(this,"config", getDataFolder().getAbsolutePath());
-            pubSub = new ModSuitePubSub();
             redisHelper = new RedisHelper(new RedisCredentials(config.getConfiguration().getString("Redis.IP"),
                     config.getConfiguration().getString("Redis.Password"),
                     config.getConfiguration().getInt("Redis.Port")));
+            pubSub = new ModSuitePubSub();
         }
         /* Subscribe to the Pub Sub Channels */
-        pubSub.subscribe(ModSuitePubSub.IDENTIFIER + "SC",
-                ModSuitePubSub.IDENTIFIER + "RQ",
-                ModSuitePubSub.IDENTIFIER + "RP");
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                redisHelper.getPool().getResource().subscribe(pubSub, ModSuitePubSub.IDENTIFIER + "SC", ModSuitePubSub.IDENTIFIER + "RP", ModSuitePubSub.IDENTIFIER + "RQ");
+            }
+        }.runTaskAsynchronously(this);
+
         /* Register Commands and Plugin Listeners */
         registerCommands();
         registerListeners();

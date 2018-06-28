@@ -1,6 +1,7 @@
 package com.frozenorb.basic;
 
 import com.frozenorb.basic.commands.DonateCommand;
+import com.frozenorb.basic.commands.MessageCommand;
 import com.frozenorb.basic.commands.PingCommand;
 import com.frozenorb.basic.listeners.PlayerListeners;
 import com.frozenorb.basic.profile.ProfileHandler;
@@ -33,6 +34,7 @@ public class BasicPlugin extends JavaPlugin {
     private void registerCommands(){
         getCommand("donate").setExecutor(new DonateCommand());
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("message").setExecutor(new MessageCommand());
     }
 
     /**

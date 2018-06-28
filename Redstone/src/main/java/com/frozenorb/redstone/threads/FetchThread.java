@@ -1,19 +1,12 @@
 package com.frozenorb.redstone.threads;
 
-import com.frozenorb.commonlibs.utils.TPSUtility;
 import com.frozenorb.redstone.RedstonePlugin;
-import com.frozenorb.redstone.RedstonePluginSettings;
 import com.frozenorb.redstone.server.Server;
 import com.frozenorb.redstone.server.ServerHandler;
+import com.frozenorb.redstone.server.ServerStage;
 import com.frozenorb.redstone.server.ServerState;
-import org.bukkit.Bukkit;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Pipeline;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class FetchThread extends Thread {
 
@@ -26,7 +19,7 @@ public class FetchThread extends Thread {
         while (true) {
             ping();
             try {
-                sleep(100);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -54,6 +47,8 @@ public class FetchThread extends Thread {
                 server.getData().setOnlinePlayers(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "OnlinePlayers")));
                 /* Max Players */
                 server.getData().setMaxPlayers(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "MaxPlayers")));
+                /* Stage */
+                server.setStage(ServerStage.getFromOrdinal(Integer.valueOf(jedis.hget("Redstone-Server:" + serverName, "Stage"))));
             }
         }
     }

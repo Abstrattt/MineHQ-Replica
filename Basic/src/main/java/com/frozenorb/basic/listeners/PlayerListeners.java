@@ -17,7 +17,9 @@ public class PlayerListeners implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         PlayerProfile profile = new PlayerProfile(player);
+        /* Call Event */
         Bukkit.getPluginManager().callEvent(new ProfileCreateEvent(profile));
+        /* Add Profile */
         ProfileHandler.addProfile(profile);
 
     }
@@ -25,8 +27,10 @@ public class PlayerListeners implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        PlayerProfile profile = null;
+        PlayerProfile profile = ProfileHandler.getProfile(player.getUniqueId());
+        /* Call Event */
         Bukkit.getPluginManager().callEvent(new ProfileDestoryEvent(profile));
+        /* Remove Profile */
         ProfileHandler.removeProfile(profile);
     }
 

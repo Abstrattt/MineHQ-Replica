@@ -38,7 +38,7 @@ public class PlayerScoreboard {
     /**
      * Player Scoreboard Class
      */
-    PlayerScoreboard(ScoreboardHandler handler, Player player) {
+    public PlayerScoreboard(ScoreboardHandler handler, Player player) {
         this.handler = handler;
         /* Define Player Object */
         this.player = player;

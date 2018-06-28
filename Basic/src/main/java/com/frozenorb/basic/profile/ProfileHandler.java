@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class ProfileHandler {
 
@@ -22,5 +23,17 @@ public class ProfileHandler {
      */
     public static void removeProfile(PlayerProfile playerProfile){
         profiles.remove(playerProfile);
+    }
+
+    /**
+     * Get Profile from the Collection
+     */
+    public static PlayerProfile getProfile(UUID uuid) {
+        for (PlayerProfile playerProfile : profiles) {
+            if (playerProfile.getUuid().equals(uuid)) {
+                return playerProfile;
+            }
+        }
+        return null;
     }
 }

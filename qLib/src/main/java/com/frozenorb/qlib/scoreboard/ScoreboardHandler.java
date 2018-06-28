@@ -29,7 +29,7 @@ public class ScoreboardHandler {
         /* Plugin Instance */
         this.plugin = plugin;
         /* Register Listeners */
-        this.plugin.getServer().getPluginManager().registerEvents(new ConnectionListeners(), this.plugin);
+        this.plugin.getServer().getPluginManager().registerEvents(new ConnectionListeners(this), this.plugin);
         /* Give everyone a scoreboard */
         this.applyScoreboards();
         /* Start the Scoreboard Thread */

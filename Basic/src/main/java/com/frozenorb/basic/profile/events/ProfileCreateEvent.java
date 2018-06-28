@@ -8,7 +8,10 @@ import org.bukkit.event.HandlerList;
 @Getter
 public class ProfileCreateEvent extends Event {
 
-    public static HandlerList handlerList = new HandlerList();
+    /* Handler List */
+    @Getter public static HandlerList handlerList = new HandlerList();
+
+    /* Player Profile */
     private PlayerProfile playerProfile;
 
     public ProfileCreateEvent(PlayerProfile playerProfile){

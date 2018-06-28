@@ -3,6 +3,7 @@ package com.frozenorb.basic.profile;
 import com.frozenorb.qlib.channels.ChatChannel;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -25,6 +26,10 @@ public class PlayerProfile {
 
     public PlayerProfile(Player player) {
         this(player.getUniqueId());
+    }
+
+    public Player getPlayer(){
+        return Bukkit.getPlayer(uuid);
     }
 
     /**

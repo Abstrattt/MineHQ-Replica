@@ -11,7 +11,7 @@ public class NMS1_8Tab implements INMSTab {
 
     @Override
     public void createPlayer() {
-        GameProfile gameProfile = new GameProfile();
+        /*GameProfile gameProfile = new GameProfile();
 
         EntityPlayer entityPlayer = new EntityPlayer();
 
@@ -19,7 +19,7 @@ public class NMS1_8Tab implements INMSTab {
 
         Packet packet = new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, entityPlayer);
 
-        sendPacket(player, packet);
+        sendPacket(player, packet);*/
 
 
     }

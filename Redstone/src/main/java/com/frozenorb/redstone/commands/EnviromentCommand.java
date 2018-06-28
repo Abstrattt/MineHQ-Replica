@@ -14,7 +14,7 @@ public class EnviromentCommand implements CommandExecutor {
         commandSender.sendMessage(MessageUtility.formatMessage(""));
         commandSender.sendMessage(MessageUtility.formatMessage("&cName: &f" + RedstonePluginSettings.SERVER_NAME));
         commandSender.sendMessage(MessageUtility.formatMessage("&cGroup: &f" + RedstonePluginSettings.SERVER_GROUP));
-        commandSender.sendMessage(MessageUtility.formatMessage("&cStage: &fN/A"));
+        commandSender.sendMessage(MessageUtility.formatMessage("&cStage: &f" + RedstonePluginSettings.SERVER_STAGE));
         return false;
     }
 }

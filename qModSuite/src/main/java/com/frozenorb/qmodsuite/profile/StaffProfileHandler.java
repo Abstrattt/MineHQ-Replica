@@ -1,13 +1,14 @@
 package com.frozenorb.qmodsuite.profile;
 
 import com.frozenorb.basic.profile.PlayerProfile;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class StaffProfileHandler {
 
-    private static Map<PlayerProfile, StaffProfile> profiles = new HashMap<>();
+    @Getter private static Map<PlayerProfile, StaffProfile> profiles = new HashMap<>();
 
     public static void addProfile(PlayerProfile playerProfile, StaffProfile staffProfile) {
         profiles.put(playerProfile, staffProfile);

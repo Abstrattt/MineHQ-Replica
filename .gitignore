@@ -28,3 +28,7 @@ hs_err_pid*
 \.idea\
 .idea/workspace.xml
 .idea/modules.xml
+uGameLobby/target/classes/plugin.yml
+uGameLobby/target/classes/config.yml
+Redstone/target/classes/config.yml
+Redstone/target/classes/config.yml

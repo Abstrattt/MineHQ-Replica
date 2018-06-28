@@ -47,8 +47,8 @@ public class RedstonePlugin extends JavaPlugin {
             threads.add(new FetchThread());
             threads.add(new PayloadThread());
         }
-        startThreads();
         loadPluginSettings();
+        startThreads();
         registerCommands();
         registerListeners();
         setup = true;

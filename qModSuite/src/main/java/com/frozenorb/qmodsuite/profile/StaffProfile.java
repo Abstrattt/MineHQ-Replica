@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter @Setter
 public class StaffProfile {
 
-    private boolean vanished;
+    private boolean vanished, staffMode;
     private PlayerProfile playerProfile;
 
     public StaffProfile(PlayerProfile playerProfile) {

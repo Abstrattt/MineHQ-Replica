@@ -15,9 +15,10 @@ public class ProfileListeners implements Listener {
     public void onProfileCreate(ProfileCreateEvent event) {
         /* Player Object */
         Player player = Bukkit.getPlayer(event.getPlayerProfile().getUuid());
+        /* Check for correct permission */
         if (player.hasPermission("Staff.Mode")) {
             /* Create Staff Profile */
-            StaffProfile staffProfile = new StaffProfile();
+            StaffProfile staffProfile = new StaffProfile(event.getPlayerProfile());
             /* Add Staff Profile */
             StaffProfileHandler.addProfile(event.getPlayerProfile(), staffProfile);
         }

@@ -8,7 +8,10 @@ import org.bukkit.event.HandlerList;
 @Getter
 public class ProfileDestoryEvent extends Event {
 
-    public static HandlerList handlerList = new HandlerList();
+    /* Handler List */
+    @Getter public static HandlerList handlerList = new HandlerList();
+
+    /* Player Profile */
     private PlayerProfile playerProfile;
 
     public ProfileDestoryEvent(PlayerProfile playerProfile){
@@ -19,4 +22,5 @@ public class ProfileDestoryEvent extends Event {
     public HandlerList getHandlers() {
         return handlerList;
     }
+
 }

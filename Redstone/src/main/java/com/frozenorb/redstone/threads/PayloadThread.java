@@ -3,6 +3,7 @@ package com.frozenorb.redstone.threads;
 import com.frozenorb.commonlibs.utils.TPSUtility;
 import com.frozenorb.redstone.RedstonePlugin;
 import com.frozenorb.redstone.RedstonePluginSettings;
+import com.frozenorb.redstone.server.ServerStage;
 import com.frozenorb.redstone.server.ServerState;
 import org.bukkit.Bukkit;
 import redis.clients.jedis.Jedis;
@@ -24,7 +25,7 @@ public class PayloadThread extends Thread {
         while (true) {
             ping();
             try {
-                sleep(100);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -42,11 +43,11 @@ public class PayloadThread extends Thread {
             data.put("MaxPlayers", Bukkit.getMaxPlayers() + "");
             data.put("State", ServerState.getCurrent().getOrdinal() + "");
             data.put("Group", RedstonePluginSettings.SERVER_GROUP);
+            data.put("Stage", ServerStage.getFromString(RedstonePluginSettings.SERVER_STAGE).getOrdinal() + "");
             data.put("TPS", TPSUtility.getRecentTps()[0] + "");
 
             /* Put that data into the database */
             jedis.hmset("Redstone-Server:" + RedstonePluginSettings.SERVER_NAME, data);
-            Logger.getAnonymousLogger().log(Level.SEVERE, data.toString());
         }
     }
 }

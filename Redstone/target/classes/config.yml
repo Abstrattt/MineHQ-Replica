@@ -17,8 +17,11 @@ Server-Name: NA-Hub-1
 #Server Group
 Server-Group: Hub
 
+#Server Stage
+Server-Stage: Production
+
 #Redis Settings
 Redis:
   IP: 127.0.0.1
-  Port: 6621
-  Password: password
+  Port: 6379
+  Password: ""

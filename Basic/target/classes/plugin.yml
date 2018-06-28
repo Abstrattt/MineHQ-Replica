@@ -2,8 +2,11 @@
 # Information #
 ###############
 name: Basic
-version: null
+version: 1.0
 author: FrozenOrb Development Team
+description: Basic Plugin Replica
+website: https://www.frozenorb.net/
+depend: [CommonLibs]
 main: com.frozenorb.basic.BasicPlugin
 
 ############
@@ -25,7 +28,7 @@ commands:
   #Message Command
   message:
     description: desc
-    aliases: [tell]
+    aliases: [tell, msg]
   #Spy Command
   spy:
     description: desc

@@ -2,22 +2,37 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Basic" />
+        <module name="Bridge" />
+        <module name="Bunkers" />
+        <module name="Cheatbreaker-Only-Proxy" />
         <module name="CommonLibs" />
+        <module name="Meetup" />
+        <module name="Mobtimizer" />
         <module name="qLib" />
         <module name="qModSuite" />
+        <module name="Redstone" />
+        <module name="uGameLobby" />
         <module name="uHub" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Basic" target="1.6" />
-      <module name="CommonLibs" target="1.5" />
-      <module name="qLib" target="1.5" />
+      <module name="Basic" target="1.7" />
+      <module name="Bridge" target="1.6" />
+      <module name="Bunkers" target="1.7" />
+      <module name="Cheatbreaker-Only-Proxy" target="1.5" />
+      <module name="CommonLibs" target="1.8" />
+      <module name="Meetup" target="1.7" />
+      <module name="Mobtimizer" target="1.7" />
+      <module name="qLib" target="1.8" />
       <module name="qModSuite" target="1.8" />
+      <module name="Redstone" target="1.8" />
+      <module name="uGameLobby" target="1.8" />
       <module name="uHub" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -1,5 +1,6 @@
 package com.frozenorb.qmodsuite.commands;
 
+import com.frozenorb.commonlibs.utils.MessageUtility;
 import com.frozenorb.qmodsuite.ActionUtils;
 import com.frozenorb.qmodsuite.ModSuitePubSub;
 import com.frozenorb.qmodsuite.qModSuitePlugin;
@@ -27,7 +28,7 @@ public class RequestCommand implements CommandExecutor {
         /* Player Object */
         Player player = (Player) commandSender;
         if (strings.length < 1) {
-            commandSender.sendMessage("Command Usage");
+            commandSender.sendMessage(MessageUtility.formatMessage("&c/" + s + " [message]"));
             return false;
         }
 
@@ -47,9 +48,7 @@ public class RequestCommand implements CommandExecutor {
                 /* Make Report Message */
                 StringBuilder requestMessage = new StringBuilder();
                 for (String arg : strings) {
-                    if (!arg.equalsIgnoreCase(strings[0])) {
-                        requestMessage.append(arg).append(" ");
-                    }
+                    requestMessage.append(arg).append(" ");
                 }
 
                 /* Construct Message to send over Redis Pub Sub */

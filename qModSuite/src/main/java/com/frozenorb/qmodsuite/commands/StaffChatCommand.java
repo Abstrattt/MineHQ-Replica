@@ -36,9 +36,7 @@ public class StaffChatCommand implements CommandExecutor {
                 /* Make Staff Message */
                 StringBuilder staffMessage = new StringBuilder();
                 for (String arg : strings) {
-                    if (!arg.equalsIgnoreCase(strings[0])) {
-                        staffMessage.append(arg).append(" ");
-                    }
+                    staffMessage.append(arg).append(" ");
                 }
 
                 /* Construct Message to send over Redis Pub Sub */

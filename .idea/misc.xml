@@ -8,6 +8,13 @@
         <option value="$PROJECT_DIR$/uHub/pom.xml" />
         <option value="$PROJECT_DIR$/CommonLibs/pom.xml" />
         <option value="$PROJECT_DIR$/qModSuite/pom.xml" />
+        <option value="$PROJECT_DIR$/Redstone/pom.xml" />
+        <option value="$PROJECT_DIR$/Bridge/pom.xml" />
+        <option value="$PROJECT_DIR$/Bunkers/pom.xml" />
+        <option value="$PROJECT_DIR$/Meetup/pom.xml" />
+        <option value="$PROJECT_DIR$/Cheatbreaker-Only-Proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/Mobtimizer/pom.xml" />
+        <option value="$PROJECT_DIR$/uGameLobby/pom.xml" />
       </list>
     </option>
   </component>

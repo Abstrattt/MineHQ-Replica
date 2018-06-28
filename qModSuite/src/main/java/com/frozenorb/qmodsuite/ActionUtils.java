@@ -16,8 +16,6 @@ public class ActionUtils {
             pipeline.set(key, "true");
             pipeline.expire(key, cooldown);
             pipeline.sync();
-            qModSuitePlugin.getRedisHelper().getPool().returnResource(jedis);
-            jedis.close();
         }
     }
 
@@ -28,8 +26,6 @@ public class ActionUtils {
         boolean cooldown = false;
         try (Jedis jedis = qModSuitePlugin.getRedisHelper().getPool().getResource()){
             cooldown = jedis.exists(ModSuitePubSub.IDENTIFIER + channel + ":" + player.getName());
-            qModSuitePlugin.getRedisHelper().getPool().returnResource(jedis);
-            jedis.close();
         }
         return cooldown;
     }

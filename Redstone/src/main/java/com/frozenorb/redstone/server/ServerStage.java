@@ -20,4 +20,22 @@ public enum ServerStage {
     ServerStage(int ordinal){
         this.ordinal = ordinal;
     }
+
+    public static ServerStage getFromOrdinal(int ordinal) {
+        for (ServerStage stage : ServerStage.values()) {
+            if (stage.getOrdinal() == ordinal) {
+                return stage;
+            }
+        }
+        return null;
+    }
+
+    public static ServerStage getFromString(String id) {
+        for (ServerStage stage : ServerStage.values()) {
+            if (stage.name().equalsIgnoreCase(id)) {
+                return stage;
+            }
+        }
+        return null;
+    }
 }
