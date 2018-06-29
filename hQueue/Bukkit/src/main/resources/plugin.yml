@@ -1,0 +1,14 @@
+###############
+# Information #
+###############
+name: hQueue-Bukkit
+version: 1.0
+website: https://www.frozenorb.net/
+author: FrozenOrb Development Team
+depend: [CommonLibs, Redstone, Basic, qLib]
+main: com.frozenorb.hqueuebukkit.hQueueBukkitPlugin
+
+############
+# Commands #
+############
+commands:

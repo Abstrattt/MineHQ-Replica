@@ -4,7 +4,8 @@
 name: uGameLobby
 version: 1.0
 website: https://www.frozenorb.net/
-depend: [CommonLibs, Redstone]
+depend: [CommonLibs, Redstone, qLib]
+description: uGameLobby Plugin Description
 author: FrozenOrb Development Team
 main: com.frozenorb.ugamelobby.uGameLobbyPlugin
 
@@ -20,3 +21,7 @@ commands:
   modequeues:
     description: Send dump of gamemode queue
     aliases: [modequeue]
+  #Hub Command
+  hub:
+    description: Sends to the Hub
+    aliases: [lobby]

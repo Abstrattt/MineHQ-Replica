@@ -15,6 +15,7 @@ public class ClickListeners implements Listener {
     public void onClick(PlayerInteractEvent event){
         Player player = event.getPlayer();
 
+        //TODO make this more effcient
         if (player.getItemInHand() == null || player.getItemInHand().getType() == Material.AIR){
             return;
         }

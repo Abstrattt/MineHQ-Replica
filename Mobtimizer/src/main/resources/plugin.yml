@@ -1,0 +1,15 @@
+###############
+# Information #
+###############
+name: Mobtimizer
+version: 1.0
+website: https://www.frozenorb.net/
+depend: [CommonLibs]
+description: Mobtimizer Replica Plugin
+author: FrozenOrb Development Team
+main: com.frozenorb.ugamelobby.uGameLobbyPlugin
+
+############
+# Commands #
+############
+commands:

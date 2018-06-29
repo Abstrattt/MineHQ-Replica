@@ -3,6 +3,7 @@ package com.frozenorb.uhub.spawn;
 import com.frozenorb.commonlibs.utils.LocationUtility;
 import com.frozenorb.uhub.configs.ConfigurationHandler;
 import com.frozenorb.uhub.configs.LocationsConfig;
+import com.frozenorb.uhub.spawn.menus.type.ServerSelectorMenu;
 import com.frozenorb.uhub.uHubPlugin;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class SpawnHandler {
 
     @Getter @Setter private static Location spawnLocation;
+    @Getter @Setter private static ServerSelectorMenu serverSelectorMenu = new ServerSelectorMenu();
 
     public static void loadSpawnLocation(){
         String locationString = ConfigurationHandler.getLocations().getConfiguration().getString("Spawn-Location");

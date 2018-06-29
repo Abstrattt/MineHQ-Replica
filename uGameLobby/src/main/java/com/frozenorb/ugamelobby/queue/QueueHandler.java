@@ -10,7 +10,11 @@ import java.util.UUID;
 public class QueueHandler {
 
     @Getter private static List<ModeQueue> queues = new ArrayList<>();
-    @Getter private static boolean singularQueue = false;
+    @Getter private static boolean singularQueue = true;
+
+    public QueueHandler() {
+        addQueue(new ModeQueue("default"));
+    }
 
     /**
      * Add a Queue

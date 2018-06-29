@@ -5,33 +5,34 @@ import com.frozenorb.uhub.commands.SpawnCommand;
 import com.frozenorb.uhub.configs.ConfigurationHandler;
 import com.frozenorb.uhub.listeners.*;
 import com.frozenorb.uhub.spawn.SpawnHandler;
+import com.frozenorb.uhub.spawn.menus.MenuHandler;
 import com.frozenorb.uhub.threads.PlayerCountThread;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class uHubPlugin extends JavaPlugin {
 
-    private boolean setup = false;
     private ScoreboardHandler scoreboardHandler;
     private PlayerCountThread playerCountThread;
 
     @Override
     public void onEnable() {
-        if (!setup){
-            new ConfigurationHandler();
-            scoreboardHandler = new ScoreboardHandler(this, 10, new HubAdapter());
-        }
+        new ConfigurationHandler();
+        registerBungeeListeners();
+        new MenuHandler();
+        scoreboardHandler = new ScoreboardHandler(this, 5, new HubAdapter());
+        playerCountThread = new PlayerCountThread();
+        playerCountThread.start();
         /* Load the Spawn */
         SpawnHandler.loadSpawnLocation();
         /* Register Commands and Plugin Listeners */
-        registerBungeeListeners();
         registerCommands();
         registerListeners();
-        setup = true;
     }
 
     @Override
     public void onDisable() {
+        playerCountThread.stop();
     }
 
     /**
@@ -58,5 +59,6 @@ public class uHubPlugin extends JavaPlugin {
         pm.registerEvents(new PlayerListeners(), this);
         pm.registerEvents(new ConnectionListeners(), this);
         pm.registerEvents(new ClickListeners(), this);
+        pm.registerEvents(new MenuListeners(), this);
     }
 }

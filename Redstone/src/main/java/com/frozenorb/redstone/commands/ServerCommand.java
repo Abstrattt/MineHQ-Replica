@@ -18,8 +18,8 @@ public class ServerCommand implements CommandExecutor {
             for (Server server : ServerHandler.getServersFromGroup(serverGroup)) {
                 commandSender.sendMessage(MessageUtility.formatMessage("&f* &a&l" + server.getServerID() + " &7(&f" + server.getData().getOnlinePlayers() + "&7/&f" + server.getData().getMaxPlayers() + "&7) &e" + server.getData().getTps() + "TPS &7- &e" + server.getData().getState()));
             }
+            commandSender.sendMessage("");
         }
-        commandSender.sendMessage("");
         commandSender.sendMessage(MessageUtility.formatMessage("&7&m---------------------------"));
         return false;
     }

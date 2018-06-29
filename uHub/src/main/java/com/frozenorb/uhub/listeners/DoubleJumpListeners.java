@@ -47,7 +47,7 @@ public class DoubleJumpListeners implements Listener {
 
         /* Execute */
         player.teleport(loc.add(0, teleportUp, 0));
-        final Vector vector = loc.getDirection().multiply(otherBoost);
+        final Vector vector = loc.getDirection().multiply(otherBoost).setY(1.75);
         player.setVelocity(vector);
         player.playSound(loc, sound, 2,2);
     }

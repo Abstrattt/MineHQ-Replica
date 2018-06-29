@@ -4,8 +4,9 @@
 name: uHub
 version: 1.0
 main: com.frozenorb.uhub.uHubPlugin
+description: uHub Plugin Replica
 website: https://www.frozenorb.net/
-depend: [qLib]
+depend: [qLib, Redstone, CommonLibs]
 author: FrozenOrb Development Team
 
 ############

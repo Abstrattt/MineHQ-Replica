@@ -22,7 +22,7 @@ public enum JoinItems {
                     .build(),
             /* Click Handler */
             player -> {
-
+                SpawnHandler.getServerSelectorMenu().open(player);
             }
     )),
 

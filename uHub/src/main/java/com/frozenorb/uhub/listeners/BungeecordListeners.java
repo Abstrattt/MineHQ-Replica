@@ -1,6 +1,9 @@
 package com.frozenorb.uhub.listeners;
 
 import com.frozenorb.uhub.threads.PlayerCountThread;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -11,12 +14,19 @@ public class BungeecordListeners implements PluginMessageListener {
 
     @Override
     public void onPluginMessageReceived(String s, Player player, byte[] bytes) {
-        if (!s.equals("BungeeCord")) return;
+        if (!s.equalsIgnoreCase("BungeeCord")) {
+            return;
+        }
         try {
-            DataInputStream in = new DataInputStream(new ByteArrayInputStream(bytes));
-            String command = in.readUTF();
-            if (command.equals("PlayerCount")) {
-                PlayerCountThread.PLAYER_COUNT = in.readInt();
+            ByteArrayDataInput in = ByteStreams.newDataInput(bytes);
+            String subchannel = in.readUTF();
+
+            if (subchannel.equals("PlayerCount")) {
+                String server = in.readUTF();
+                int playerCount = in.readInt();
+
+                PlayerCountThread.setPLAYER_COUNT(playerCount);
+
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -34,6 +34,7 @@ public class ScoreboardHandler {
         this.applyScoreboards();
         /* Start the Scoreboard Thread */
         this.thread = new ScoreboardThread(this, interval);
+        this.thread.start();
     }
     public ScoreboardHandler(JavaPlugin plugin, int interval, IScoreboardAdapter adapter) {
         this(plugin, interval);

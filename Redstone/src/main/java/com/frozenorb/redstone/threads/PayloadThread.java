@@ -8,6 +8,7 @@ import com.frozenorb.redstone.server.ServerState;
 import org.bukkit.Bukkit;
 import redis.clients.jedis.Jedis;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -15,6 +16,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PayloadThread extends Thread {
+
+    /* Decimanl Format */
+    //TODO maybe put this in a commons class when you clean everything up
+    private DecimalFormat decimalFormat = new DecimalFormat("##.00");
 
     public PayloadThread() {
         setName("Redstone-Payload");
@@ -44,7 +49,8 @@ public class PayloadThread extends Thread {
             data.put("State", ServerState.getCurrent().getOrdinal() + "");
             data.put("Group", RedstonePluginSettings.SERVER_GROUP);
             data.put("Stage", ServerStage.getFromString(RedstonePluginSettings.SERVER_STAGE).getOrdinal() + "");
-            data.put("TPS", TPSUtility.getRecentTps()[0] + "");
+            //TODO later see if this works
+            data.put("TPS", decimalFormat.format(TPSUtility.getRecentTps()[0]));
 
             /* Put that data into the database */
             jedis.hmset("Redstone-Server:" + RedstonePluginSettings.SERVER_NAME, data);

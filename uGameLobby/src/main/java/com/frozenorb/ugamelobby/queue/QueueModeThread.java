@@ -14,20 +14,25 @@ public class QueueModeThread extends Thread {
 
     @Override
     public void run() {
-        QueueHandler.getQueues().forEach(queue -> {
-            if (queue.getQueued().size() >= queue.getRequiredPlayers()) {
+        while(true) {
+            QueueHandler.getQueues().forEach(queue -> {
+                if (queue.getQueued().size() >= queue.getRequiredPlayers()) {
 
 
-                /* Once a server is found */
-                queue.getQueued().forEach(uuid -> {
-                    Player queuePlayer = Bukkit.getPlayer(uuid);
-                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                    /*out.writeUTF("Connect");
-                    out.writeUTF("hub");*/
-                    //TODO find out how we can dynamically add and remove servers
-                    queuePlayer.sendPluginMessage(uGameLobbyPlugin.getProvidingPlugin(uGameLobbyPlugin.class), "BungeeCord", out.toByteArray());
-                });
+                    /* Once a server is found */
+                    queue.getQueued().forEach(uuid -> {
+                        Player queuePlayer = Bukkit.getPlayer(uuid);
+                        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                        //TODO find out how we can dynamically add and remove servers
+                        queuePlayer.sendPluginMessage(uGameLobbyPlugin.getProvidingPlugin(uGameLobbyPlugin.class), "BungeeCord", out.toByteArray());
+                    });
+                }
+            });
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
+        }
     }
 }

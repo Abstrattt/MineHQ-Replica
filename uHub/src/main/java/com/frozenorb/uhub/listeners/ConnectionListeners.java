@@ -66,7 +66,9 @@ public class ConnectionListeners implements Listener {
         event.setQuitMessage(null);
 
         /* Stop Riding */
-        player.getVehicle().setPassenger(null);
+        if (player.getVehicle() != null) {
+            player.getVehicle().leaveVehicle();
+        }
     }
 
 }

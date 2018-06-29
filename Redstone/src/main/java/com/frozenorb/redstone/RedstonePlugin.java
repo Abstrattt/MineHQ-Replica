@@ -61,11 +61,11 @@ public class RedstonePlugin extends JavaPlugin {
         try(Jedis jedis = RedstonePlugin.getRedisHelper().getPool().getResource()){
             /* Get the data from the current server and display it in a hash map */
             Map<String, String> data = new HashMap<>();
-            data.put("OnlinePlayers", -1 + "");
-            data.put("MaxPlayers", -1 + "");
+            data.put("OnlinePlayers", 0 + "");
+            data.put("MaxPlayers", 0 + "");
             data.put("State", ServerState.OFFLINE.getOrdinal() + "");
             data.put("Group", RedstonePluginSettings.SERVER_GROUP);
-            data.put("TPS", -1 + "");
+            data.put("TPS", 0 + "");
 
             /* Put that data into the database */
             jedis.hmset("Redstone-Server:" + RedstonePluginSettings.SERVER_NAME, data);

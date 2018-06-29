@@ -75,5 +75,10 @@
             <artifactId>qLib</artifactId>
             <version>0.1a</version>
         </dependency>
+        <dependency>
+            <groupId>com.frozenorb</groupId>
+            <artifactId>redstone</artifactId>
+            <version>0.1a</version>
+        </dependency>
     </dependencies>
 </project>

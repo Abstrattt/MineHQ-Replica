@@ -1,5 +1,6 @@
 package com.frozenorb.uhub.threads;
 
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import com.frozenorb.uhub.uHubPlugin;
 
@@ -9,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PlayerCountThread extends Thread {
 
-    public static int PLAYER_COUNT = -1;
+    @Setter public static int PLAYER_COUNT = 1;
 
     public PlayerCountThread(){
         setName("uHub-PlayerCount");
@@ -17,11 +18,13 @@ public class PlayerCountThread extends Thread {
 
     @Override
     public void run() {
-        pingBungee();
-        try {
-            sleep(TimeUnit.MILLISECONDS.toSeconds(2));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while(true) {
+            pingBungee();
+            try {
+                sleep(250);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
