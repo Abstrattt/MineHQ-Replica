@@ -1,5 +1,6 @@
 package com.frozenorb.uhub.spawn.menus.type;
 
+import com.frozenorb.commonlibs.utils.BungeeUtility;
 import com.frozenorb.commonlibs.utils.ItemUtility;
 import com.frozenorb.commonlibs.utils.MessageUtility;
 import com.frozenorb.redstone.server.Server;
@@ -48,10 +49,7 @@ public class ServerSelectorMenu extends HubMenu {
                                 .amount(1).build(),
                         player -> {
                             player.closeInventory();
-                            ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                            out.writeUTF("Connect");
-                            out.writeUTF("UHC-Meetup-Lobby");
-                            player.sendPluginMessage(uHubPlugin.getProvidingPlugin(uHubPlugin.class), "BungeeCord", out.toByteArray());
+                            BungeeUtility.sendPlayerToServer(uHubPlugin.getProvidingPlugin(uHubPlugin.class), player, "UHC-Meetup-Lobby");
                         },
                         "UHC-Meetup-Lobby"
                 ));
