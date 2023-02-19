@@ -70,5 +70,10 @@
             <artifactId>CommonLibs</artifactId>
             <version>0.1a</version>
         </dependency>
+        	<dependency>
+	    <groupId>com.github.FrozedClubDevelopment</groupId>
+	    <artifactId>FrozedLib</artifactId>
+	    <version>1.0</version>
+	</dependency>
     </dependencies>
 </project>
